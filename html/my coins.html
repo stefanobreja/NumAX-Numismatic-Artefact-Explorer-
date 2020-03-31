@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>My coins</title>
+</head>
+
+<body>
+    <header class="header">
+        <!-- <div class="logo-image">
+            <img src="./logo3.jpg" alt="logo-image">
+        </div> -->
+        <div class="logo">NumAX</div>
+        <!-- <div class="welcome">Welcome, User!</div> -->
+        <nav class="navbar">
+            <ul class="navbar__items">
+                <li class="navbar__item" id="navbar_selected" name="my_coins"><a href="#">My coins</a></li>
+                <li class="navbar__item" name="All coins"><a href="all coins.html">All coins</a></li>
+                <li class="navbar__item" name="Statistics"><a href="statistics.html">Statistics</a></li>
+                <li class="navbar__item__divider"></li>
+                <li class="navbar__item logout" name="Logout">Logout</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main">
+
+        <aside class="filter">
+            <label class="filter__label">Search by:</label>
+            <ul class="filter__items">
+                <li class="filter__item">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="ex: 100 Lei - Carol II">
+                </li>
+                <li class="filter__item">
+                    <label for="year">Year:</label>
+                    <input type="number" name="year" id="year" placeholder="ex: 1939">
+                </li>
+                <li class="filter__item">
+                    <label for="country">Country:</label>
+                    <input type="text" name="country" id="country" placeholder="ex: Romania">
+                </li>
+                <li class="filter__item">
+                    <label for="shape">Shape:</label>
+                    <input type="text" name="shape" id="shape" placeholder="ex: round">
+                </li>
+                <li class="filter__item">
+                    <input type="submit" value="Add a new coin">
+                </li>
+                <li class="filter__item">
+                    <input type="submit" value="Search!">
+                </li>
+            </ul>
+        </aside>
+
+        <main class="coins">
+            <ul class="coin__container">
+                <li class="coin">
+                    <div class="coin__images">
+                        <img src="../src/face-coin.jpg" alt="coin photo">
+                        <img src="../src/back-coin.jpg" alt="coin photo">
+                    </div>
+                    <div class="coin__info">
+                        <span>
+                            1 Apsar The Dormition Cathedral of Dranda
+                        </span>
+                        <span>
+                            1935
+                        </span>
+                        <span>
+                            Bronze | 2.3g | 18.6mm
+                        </span>
+                    </div>
+                </li>
+                <li class="coin">
+                    <div class="coin__images">
+                        <img src="../src/face-coin.jpg" alt="coin photo">
+                        <img src="../src/back-coin.jpg" alt="coin photo">
+                    </div>
+                    <div class="coin__info">
+                        <span>
+                            1 Apsar The Dormition Cathedral of Dranda
+                        </span>
+                        <span>
+                            1935
+                        </span>
+                        <span>
+                            Bronze | 2.3g | 18.6mm
+                        </span>
+                    </div>
+                </li>
+                <li class="coin">
+                    <div class="coin__images">
+                        <img src="../src/face-coin.jpg" alt="coin photo">
+                        <img src="../src/back-coin.jpg" alt="coin photo">
+                    </div>
+                    <div class="coin__info">
+                        <span>
+                            1 Apsar The Dormition Cathedral of Dranda
+                        </span>
+                        <span>
+                            1935
+                        </span>
+                        <span>
+                            Bronze | 2.3g | 18.6mm
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <!-- Modal section -->
+    <div class="modal-add-coin">
+        <div class="modal-content">
+            <p id="title-modal">Add a new coin to your collection</p>
+            <div class="close">+</div>
+            <div class="modal-criteria">
+                <input type="text" name="search" id="search" placeholder="Search">
+
+                <div class="modal-select">
+                    <p>Country</p>
+                    <select id="country">
+                        <option value="romania">Romania</option>
+                        <option value="usa">USA</option>
+                        <option value="belgium">Belgium</option>
+                    </select>
+                </div>
+
+                <div class="modal-select">
+                    <p>Min. year:</p>
+                    <select class="modal-select" id="min-year">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
+                </div>
+
+                <div class="modal-select">
+                    <p>Year:</p>
+                    <select class="modal-select" id="year">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
+                </div>
+
+                <div class="modal-select">
+                    <p>Max. year:</p>
+                    <select class="modal-select" id="max-year">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
+                </div>
+
+                <div class="modal-select">
+                    <p>Shape:</p>
+                    <select class="modal-select" id="shape">
+                        <option value="round">Round</option>
+                        <option value="square">Square</option>
+                    </select>
+                </div>
+
+                <div class="modal-select">
+                    <p>Composition:</p>
+                    <select class="modal-select" id="composition">
+                        <option value="copper">Copper</option>
+                    </select>
+                </div>
+            </div>
+            <input id="submit-button" type="submit" value="Submit">
+        </div>
+    </div>
+</body>
+
+</html>

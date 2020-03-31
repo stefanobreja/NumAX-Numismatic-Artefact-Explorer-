@@ -5,7 +5,9 @@
 *:before, *:after {
     box-sizing: inherit;
 }
-
+a{
+    text-decoration: none;
+}
 body {
     width: 100%;
     height: 100vh;
@@ -35,8 +37,8 @@ header {
 }
 
 .logo:hover {
-    transform: scale(1.2);
-    transition-duration: 0.2s;
+    transform: scale(1.1);
+    transition-duration: 0.4s;
 }
 
 .navbar__items {
@@ -45,17 +47,21 @@ header {
 }
 
 .navbar__item {
+    
     margin-left: 1.5em;
     display: inline-block;
     font-size: 1.5em;
 }
 
 .navbar__item:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
     color:rgb(253, 147, 139);
-    transition-duration: 0.2s;
+    transition-duration: 0.4s;
 }
 
+#navbar_selected.navbar__item {
+    color:rgb(253, 147, 139);
+}
 .logout {
     font-size: 1.1em;
 }
@@ -110,6 +116,7 @@ input {
     font-size: 0.7em;
     padding: 5px 5px;
     margin: 8px 0;
+    cursor: pointer;
     border: 1px solid rgb(254, 185, 180);
     border-radius: 4px;
     box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
@@ -117,7 +124,7 @@ input {
 
 input[type="submit"] {
     width: 0.5em;
-    margin-top: 1.5em;
+    margin-top: 0.5em;
     /* margin-bottom: auto; */
     background-color: rgb(67, 128, 164);
     color: rgb(254, 185, 180);
@@ -191,6 +198,69 @@ button.share:hover {
     transition-duration: 0.2s;
     transform: scale(1.05);
   }
+
+
+/* Add coin modal */
+.modal-add-coin{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    top:0;
+    justify-content: center;
+    z-index: 100;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+}
+.modal-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 500px;
+    background-color: white;
+}
+
+#title-modal{
+    color: rgb(67, 128, 164);
+    padding-left: 30px;
+}
+#search{
+    border: 0px;
+    min-width: 80%;
+}
+#search::placeholder{
+    color: rgb(254, 185, 180);
+}
+.modal-criteria{
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    flex-direction: r;
+    flex-wrap: wrap;
+    display: flex;
+}
+.modal-content #submit-button{
+    min-width: 60%;
+    margin: auto;
+}
+
+.modal-select{
+    justify-content: center;
+    min-width: 40%;
+}
+
+.close{
+    position: absolute;
+    font-size: 35px;
+    cursor: pointer;
+    top: 0;
+    padding-top: 5px;
+    right: 15px;
+    transform: rotate(45deg);
+    font-weight: bold;
+}
+
 
 /* @media screen and (min-width: 500px) and (max-width: 10000px) {
     if screen > 500px
