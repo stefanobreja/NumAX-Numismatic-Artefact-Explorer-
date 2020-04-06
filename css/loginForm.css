@@ -1,0 +1,164 @@
+/* 
+ * 1. Main
+ * 1.0 Html 
+ * 1.1 Body
+ * 2. Inside Container
+ * 2.0 Container
+ * 2.1 Title
+ * 2.2 Form width
+ * 2.3 Form
+ *
+ *
+ */
+
+p{
+    text-align: center;
+}
+p a{
+    color: #4281A4;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/***** 1. Main *****/
+
+/* 1.0 html */
+html{
+    height: 100%;
+   
+}
+/* 1.1 body */
+body{
+    margin: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    background-color: white;
+    font-family: 'Segoe UI';
+    /* background-color: #E9E7E7; */
+
+}
+
+/***** 2. Inside Container *****/
+
+/* 2.0 Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color:#fff;
+    width: 380px;
+    box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.75);
+}
+form .form{
+    margin: 0 auto;
+    width:90%;
+}
+#login_name,
+#login_email,
+#login_password,
+#login_repeat_password
+{
+    width: 92%;
+}
+#login_name{
+    background-image: url('/img/user.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 315px;
+    background-size: 19px;
+}
+#login_email{
+    background-image: url('/img/email-2.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 315px;
+    background-size: 19px;
+}
+#login_password{
+    background-image: url('/img/password.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 315px;
+    background-size: 19px;
+}
+#login_repeat_password{
+    background-image: url('/img/password.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 315px;
+    background-size: 19px;
+}
+/* 2.1 Title */
+.title{
+    font-family: 'Segoe UI';
+    width:auto;
+    text-align: left;
+    padding: 5px 20px 5px;
+    margin: 0;
+    background: #4281A4;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+
+/* 2.3 Form */
+input {
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+}
+
+.form input[type="text"],
+.form input[type="password"],
+.form textarea,
+.form select {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  color: #3A3F44;
+  box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.45);
+    border: 0;
+}
+
+.buttons{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons input{
+    /* flex: 1; */
+    padding: 1.2rem;
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+
+/* Buttons color */
+.buttons input[type="submit"], #send_track{
+    flex: 1;
+    background-color: #4281A4;
+
+}
+.buttons input[type="button"]{
+    flex: 1;
+    background-color: #FE938C;
+}
+.buttons input[type="button"]:hover{
+    background-color: #CE7671;
+}
+.buttons input[type="submit"]:hover{
+    background-color: #A5C2CE;
+}
+img{
+    width: 25px;
+    height: auto;
+}
+
+p{
+    padding-left: 20px;
+    color: #9CAFB7;
+}
