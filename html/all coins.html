@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>All the Coins!</title>
 </head>
+
 <body>
     <header class="header">
         <!-- <div class="logo-image">
@@ -15,8 +17,8 @@
         <!-- <div class="welcome">Welcome, User!</div> -->
         <nav class="navbar">
             <ul class="navbar__items">
-                <li class="navbar__item" name="my_coins"><a href="my coins.html">My coins</a></li> 
-                <li class="navbar__item" id="navbar_selected" name="All coins" >All coins</li>
+                <li class="navbar__item" name="my_coins"><a href="my coins.html">My coins</a></li>
+                <li class="navbar__item" id="navbar_selected" name="All coins">All coins</li>
                 <li class="navbar__item" name="Statistics"><a href="statistics.html">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
                 <li class="navbar__item logout" name="Logout">Logout</li>
@@ -25,28 +27,28 @@
     </header>
     <div class="main">
         <aside class="filter">
-                <label class="filter__label">Search by:</label>
-                <ul class="filter__items">
-                    <li class="filter__item">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" placeholder="ex: 100 Lei - Carol II">
-                    </li>
-                    <li class="filter__item">
-                        <label for="year">Year:</label>
-                        <input type="number" name="year" id="year" placeholder="ex: 1939">
-                    </li>
-                    <li class="filter__item">
-                        <label for="country">Country:</label>
-                        <input type="text" name="country" id="country" placeholder="ex: Romania">
-                    </li>
-                    <li class="filter__item">
-                        <label for="shape">Shape:</label>
-                        <input type="text" name="shape" id="shape" placeholder="ex: round">  
-                    </li>
-                    <li class="filter__item">
-                        <input type="submit" value="Search!">
-                    </li>
-                </ul>
+            <label class="filter__label">Search by:</label>
+            <ul class="filter__items">
+                <li class="filter__item">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="ex: 100 Lei - Carol II">
+                </li>
+                <li class="filter__item">
+                    <label for="year">Year:</label>
+                    <input type="number" name="year" id="year" placeholder="ex: 1939">
+                </li>
+                <li class="filter__item">
+                    <label for="country">Country:</label>
+                    <input type="text" name="country" id="country" placeholder="ex: Romania">
+                </li>
+                <li class="filter__item">
+                    <label for="shape">Shape:</label>
+                    <input type="text" name="shape" id="shape" placeholder="ex: round">
+                </li>
+                <li class="filter__item">
+                    <input type="submit" value="Search!">
+                </li>
+            </ul>
         </aside>
 
         <main class="coins">
@@ -261,4 +263,5 @@
         </main>
     </div>
 </body>
+
 </html>

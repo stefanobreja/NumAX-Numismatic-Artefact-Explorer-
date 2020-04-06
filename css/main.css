@@ -205,12 +205,16 @@ button.share:hover {
     width: 100%;
     height: 100%;
     display: flex;
-    top:0;
+    overflow: hidden;
+    top: 0;
     justify-content: center;
     z-index: 100;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
+    position: fixed;
+    display: none;
+    overflow-y: hidden;
+
 }
 .modal-content{
     position: relative;
@@ -227,22 +231,24 @@ button.share:hover {
 }
 #search{
     border: 0px;
+    max-height: 10%;
     min-width: 80%;
 }
 #search::placeholder{
     color: rgb(254, 185, 180);
 }
 .modal-criteria{
+    width: 100%;
+    height: 100%;
     justify-content: center;
-    margin: auto;
-    align-items: center;
-    flex-direction: r;
+    flex-direction: row;
     flex-wrap: wrap;
     display: flex;
 }
 .modal-content #submit-button{
     min-width: 60%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .modal-select{
