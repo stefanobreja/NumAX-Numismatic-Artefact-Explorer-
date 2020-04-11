@@ -5,8 +5,10 @@
 *:before, *:after {
     box-sizing: inherit;
 }
-a{
+.navbar__item a{
     text-decoration: none;
+    color: black;
+    display: inline-block;
 }
 body {
     width: 100%;
@@ -46,20 +48,23 @@ header {
     align-items: center;
 }
 
-.navbar__item {
-    
+#hamburger__menu {
+    display: none;
+}
+
+.navbar__item{
     margin-left: 1.5em;
     display: inline-block;
     font-size: 1.5em;
 }
 
-.navbar__item:hover {
+.navbar__item:hover a{
     transform: scale(1.15);
     color:rgb(253, 147, 139);
     transition-duration: 0.4s;
 }
 
-#navbar_selected.navbar__item {
+#navbar_selected a{
     color:rgb(253, 147, 139);
 }
 .logout {
@@ -182,7 +187,7 @@ input[type="submit"]:hover {
     display: block;
 }
 
-button.share {
+button.coin__button {
     font-size: 1em;
     border: none;
     border-radius: 0.5em;
@@ -194,7 +199,7 @@ button.share {
     color: rgb(254, 185, 180);
 }
 
-button.share:hover {
+button.coin__button:hover {
     transition-duration: 0.2s;
     transform: scale(1.05);
   }
@@ -268,10 +273,53 @@ button.share:hover {
 }
 
 
-/* @media screen and (min-width: 500px) and (max-width: 10000px) {
-    if screen > 500px
-    div {
-
+@media screen and (max-width: 750px){
+    .navbar__item__divider {
+        display: none;
     }
-    ...
-} */
+    .navbar__item:not(.change) {
+        display: none;
+    }
+
+    #hamburger__menu {
+        display: inline-block;
+    }
+    
+    .hamburger__bar1, .hamburger__bar2, .hamburger__bar3 {
+        width: 2.5em;
+        height: 0.3em;
+        background-color: rgb(253, 147, 139);
+        margin: 0.5em 0;
+        transition: 0.3s ease;
+    }
+    
+    .change .hamburger__bar1 {
+        transform: translateY(0.5em) rotate(-45deg);
+    }
+    .change .hamburger__bar3 {
+        transform: translateY(-1.1em) rotate(45deg);
+    }
+    .change .hamburger__bar2 {
+        opacity: 0;
+    }
+
+    .navbar__items.change {
+        margin-left: 0;
+        margin-top: 9em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        background-color: rgb(67, 128, 164);
+        padding: 0 0.5em 0.5em 0.5em;
+    }
+
+    .navbar__item.change {
+        margin-left: 0;
+        font-size: 1.5em;
+        align-self: center;
+    }
+
+    .logout.change {
+        font-size: 1.3em;
+    }
+}

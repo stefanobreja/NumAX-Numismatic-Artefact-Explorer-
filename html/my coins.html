@@ -21,7 +21,7 @@
                 <li class="navbar__item" name="All coins"><a href="all coins.html">All coins</a></li>
                 <li class="navbar__item" name="Statistics"><a href="statistics.html">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout" name="Logout">Logout</li>
+                <li class="navbar__item logout" name="Logout"><a href="#">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -46,11 +46,11 @@
                     <label for="shape">Shape:</label>
                     <input type="text" name="shape" id="shape" placeholder="ex: round">
                 </li>
-                <li id="button-add" class="filter__item">
-                    <input type="submit" value="Add a new coin">
-                </li>
                 <li class="filter__item">
                     <input type="submit" value="Search!">
+                </li>
+                <li id="button-add" class="filter__item">
+                    <input type="submit" value="Add a new coin">
                 </li>
             </ul>
         </aside>
@@ -71,6 +71,7 @@
                         </span>
                         <span>
                             Bronze | 2.3g | 18.6mm
+                            <button class="coin__button" type="button">share</button>
                         </span>
                     </div>
                 </li>
