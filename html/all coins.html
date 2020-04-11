@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <title>All the Coins!</title>
 </head>
-
+<script src="../javascript/my_coins.js"></script>
 <body>
     <header class="header">
         <!-- <div class="logo-image">
@@ -28,12 +28,14 @@
                 <li class="navbar__item__divider"></li>
                 <li class="navbar__item logout" name="Logout"><a href="#">Logout</a></li>
             </ul>
-            <script src="../javascript/my_coins.js"></script>
         </nav>
     </header>
     <div class="main">
         <aside class="filter">
-            <label class="filter__label">Search by:</label>
+            <div class="filter__title">
+                <label class="filter__label">Search by:</label>
+                <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
+            </div>
             <ul class="filter__items">
                 <li class="filter__item">
                     <label for="name">Name:</label>

@@ -10,7 +10,19 @@ function hamburgerMenuOnClick() {
     document.getElementById("hamburger__menu").classList.toggle("change");
     document.getElementsByClassName("navbar__items")[0].classList.toggle("change");
     var elems = document.getElementsByClassName("navbar__item");
-    for(var i = 0; i<elems.length;i++) {
+    for(var i = 0; i < elems.length; i++) {
         elems[i].classList.toggle("change");
     }
-  } 
+}
+function arrowPressed() {
+    var filter = document.getElementsByClassName("filter")[0];
+    filter.classList.toggle("show");
+    for(var i = 0; i < filter.children.length; i++) {
+        filter.children[i].classList.toggle("show");
+    }
+    document.getElementsByClassName("filter__arrow")[0].classList.toggle("hide");
+}
+
+
+  
+ 
