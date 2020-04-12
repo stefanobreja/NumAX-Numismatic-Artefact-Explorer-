@@ -22,7 +22,3 @@ function arrowPressed() {
     }
     document.getElementsByClassName("filter__arrow")[0].classList.toggle("hide");
 }
-
-
-  
- 
