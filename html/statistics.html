@@ -17,11 +17,11 @@
         <!-- <div class="welcome">Welcome, User!</div> -->
         <nav class="navbar">
             <ul class="navbar__items">
-                <li class="navbar__item" name="my_coins"><a href="index.html">My coins</a></li>
-                <li class="navbar__item" name="All coins"><a href="all coins.html">All coins</a></li>
-                <li class="navbar__item" id="navbar_selected" name="Statistics">Statistics</li>
+                <li class="navbar__item"><a href="index.html">My coins</a></li>
+                <li class="navbar__item"><a href="all_coins.html">All coins</a></li>
+                <li class="navbar__item" id="navbar_selected">Statistics</li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout" name="Logout"><a href="login.html">Logout</a></li>
+                <li class="navbar__item logout"><a href="login.html">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -41,8 +41,35 @@
             </ul>
         </aside>
 
-        <main class="coins">
-        </main>
+        <div class="statistics">
+            <table class="statistics-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Country</th>
+                    <th>No.</th>
+                </tr>
+                <tr>
+                    <td> 1 Apsar The Dormition Cathedral of Dranda</td>
+                    <td>1935</td>
+                    <td>Abkhazia</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td> 2 Apsar The Dormition Cathedral of Dranda</td>
+                    <td>1935</td>
+                    <td>Abkhazia</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td> 3 Apsar The Dormition Cathedral of Dranda</td>
+                    <td>1935</td>
+                    <td>Abkhazia</td>
+                    <td>1</td>
+                </tr>
+            </table>
+            <input class="statistics-button" type="button" value="Download">
+        </div>
     </div>
 </body>
 

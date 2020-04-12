@@ -30,15 +30,12 @@ html{
 /* 1.1 body */
 body{
     margin: 0;
-    background-color: #fff;
+    background-color: #dbe8f0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100%;
-    background-color: white;
     font-family: 'Segoe UI';
-    /* background-color: #E9E7E7; */
-
 }
 
 /***** 2. Inside Container *****/
@@ -51,17 +48,28 @@ body{
     width: 380px;
     box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.75);
 }
+.login_form{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
 form .form{
     margin: 0 auto;
     width:90%;
+}
+#login_name{
+    margin-top: 20px;
 }
 #login_name,
 #login_email,
 #login_password,
 #login_repeat_password
 {
-    width: 92%;
+    width: 90%;
 }
+
 #login_name{
     background-image: url('/img/user.svg');
     background-position: right;
@@ -130,7 +138,7 @@ input {
 }
 
 .buttons input{
-    /* flex: 1; */
+    flex: 1;
     padding: 1.2rem;
     color: #fff;
     box-sizing: border-box;

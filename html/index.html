@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="javascript" href="../javascript/my_coins.js">
     <title>My coins</title>
 </head>
 
@@ -17,11 +18,11 @@
         <!-- <div class="welcome">Welcome, User!</div> -->
         <nav class="navbar">
             <ul class="navbar__items">
-                <li class="navbar__item" id="navbar_selected" name="my_coins"><a href="#">My coins</a></li>
-                <li class="navbar__item" name="All coins"><a href="all coins.html">All coins</a></li>
-                <li class="navbar__item" name="Statistics"><a href="statistics.html">Statistics</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="#">My coins</a></li>
+                <li class="navbar__item"><a href="all_coins.html">All coins</a></li>
+                <li class="navbar__item"><a href="statistics.html">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout" name="Logout"><a href="login.html">Logout</a></li>
+                <li class="navbar__item logout"><a href="login.html">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -32,30 +33,31 @@
             <ul class="filter__items">
                 <li class="filter__item">
                     <label>Name</label>
-                    <select class="select" id="name" class="filter__item">
-                        <option class="select-items" value="1 Apsar The Dormition Cathedral of Dranda">1 Apsar The Dormition Cathedral of
+                    <select class="filter-select" id="filter-name">
+                        <option class="select-items" value="1 Apsar The Dormition Cathedral of Dranda">1 Apsar The
+                            Dormition Cathedral of
                             Dranda</option>
                     </select>
                 </li>
                 <li class="filter__item">
                     <label>Year</label>
-                    <select class="select" id="year" class="filter__item">
+                    <select class="filter-select" id="filter-year">
                         <option class="select-items" value="1935">1935</option>
                     </select>
                 </li>
                 <li class="filter__item">
                     <label>Country</label>
-                    <select class="select" id="country" class="filter__item">
+                    <select class="filter-select" id="filter-country">
                         <option class="select-items" value="abkhazia">Abkhazia</option>
                     </select>
                 </li>
                 <li class="filter__item">
                     <label>Shape</label>
-                    <select class="select" id="shape" class="filter__item">
+                    <select class="filter-select" id="filter-shape">
                         <option class="select-items" value="round">Round</option>
                     </select>
                 </li>
-                <li id="button-add" class="filter__item">
+                <li id="button-add">
                     <input type="submit" value="Add a new coin">
                 </li>
                 <li class="filter__item">
@@ -128,40 +130,38 @@
             <div class="modal-criteria">
 
                 <div class="modal-input">
-                    <label for="country">Country:</label>
-                    <input type="text" name="country" id="country" placeholder="ex: Romania">
+                    <label>Country:</label>
+                    <input type="text" id="modal-add-country" placeholder="ex: Romania">
                 </div>
 
                 <div class="modal-input">
-                    <label for="min-year">Min. Year:</label>
-                    <input type="number" name="min-year" id="min-year" placeholder="ex: 1939">
+                    <label>Min. Year:</label>
+                    <input type="number" id="modal-add-min-year" placeholder="ex: 1939">
                 </div>
 
                 <div class="modal-input">
-                    <label for="year">Year:</label>
-                    <input type="number" name="year" id="year" placeholder="ex: 1939">
+                    <label>Year:</label>
+                    <input type="number" id="modal-add-year" placeholder="ex: 1939">
                 </div>
 
                 <div class="modal-input">
-                    <label for="max-year">Max. Year:</label>
-                    <input type="number" name="max-year" id="max-year" placeholder="ex: 1939">
+                    <label>Max. Year:</label>
+                    <input type="number" id="modal-add-max-year" placeholder="ex: 1939">
                 </div>
 
                 <div class="modal-input">
-                    <label for="shape">Shape:</label>
-                    <input type="text" name="shape" id="shape" placeholder="ex: round">
+                    <label>Shape:</label>
+                    <input type="text" id="modal-add-shape" placeholder="ex: round">
                 </div>
 
                 <div class="modal-input">
-                    <label for="composition">Composition:</label>
-                    <input type="text" name="composition" id="composition" placeholder="ex: copper">
+                    <label>Composition:</label>
+                    <input type="text" id="modal-add-composition" placeholder="ex: copper">
                 </div>
             </div>
             <input id="submit-button" type="submit" value="Submit">
         </div>
     </div>
 </body>
-
-<script src="../javascript/my_coins.js"></script>
 
 </html>
