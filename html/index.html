@@ -22,11 +22,11 @@
                     <div class="hamburger__bar2"></div>
                     <div class="hamburger__bar3"></div>
                 </li>
-                <li class="navbar__item" id="navbar_selected" name="my_coins"><a href="#">My coins</a></li>
-                <li class="navbar__item" name="All coins"><a href="all coins.html">All coins</a></li>
-                <li class="navbar__item" name="Statistics"><a href="statistics.html">Statistics</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="#">My coins</a></li>
+                <li class="navbar__item"><a href="all_coins.html">All coins</a></li>
+                <li class="navbar__item"><a href="statistics.html">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout" name="Logout"><a href="#">Logout</a></li>
+                <li class="navbar__item logout"><a href="#">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -39,27 +39,37 @@
             </div>
             <ul class="filter__items">
                 <li class="filter__item">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="ex: 100 Lei - Carol II">
+                    <label>Name</label>
+                    <select class="filter-select" id="filter-name">
+                        <option class="select-items" value="1 Apsar The Dormition Cathedral of Dranda">1 Apsar The
+                            Dormition Cathedral of
+                            Dranda</option>
+                    </select>
                 </li>
                 <li class="filter__item">
-                    <label for="year">Year:</label>
-                    <input type="number" name="year" id="year" placeholder="ex: 1939">
+                    <label>Year</label>
+                    <select class="filter-select" id="filter-year">
+                        <option class="select-items" value="1935">1935</option>
+                    </select>
                 </li>
                 <li class="filter__item">
-                    <label for="country">Country:</label>
-                    <input type="text" name="country" id="country" placeholder="ex: Romania">
+                    <label>Country</label>
+                    <select class="filter-select" id="filter-country">
+                        <option class="select-items" value="abkhazia">Abkhazia</option>
+                    </select>
                 </li>
                 <li class="filter__item">
-                    <label for="shape">Shape:</label>
-                    <input type="text" name="shape" id="shape" placeholder="ex: round">
+                    <label>Shape</label>
+                    <select class="filter-select" id="filter-shape">
+                        <option class="select-items" value="round">Round</option>
+                    </select>
+                <li id="button-add" class="filter__item">
+                    <input type="submit" value="Add a new coin">
                 </li>
                 <li class="filter__item">
                     <input type="submit" value="Search!">
                 </li>
-                <li id="button-add" class="filter__item">
-                    <input type="submit" value="Add a new coin">
-                </li>
+
             </ul>
         </aside>
 
@@ -126,73 +136,42 @@
             <p id="title-modal">Add a new coin to your collection</p>
             <div class="close">+</div>
             <div class="modal-criteria">
-                <input type="text" name="search" id="search" placeholder="Search">
 
-                <div class="modal-select">
-                    <p>Country</p>
-                    <select id="country">
-                        <option value="romania">Romania</option>
-                        <option value="usa">USA</option>
-                        <option value="belgium">Belgium</option>
-                    </select>
+                <div class="modal-input">
+                    <label>Country:</label>
+                    <input type="text" id="modal-add-country" placeholder="ex: Romania">
                 </div>
 
-                <div class="modal-select">
-                    <p>Min. year:</p>
-                    <select class="modal-select" id="min-year">
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                    </select>
+                <div class="modal-input">
+                    <label>Min. Year:</label>
+                    <input type="number" id="modal-add-min-year" placeholder="ex: 1939">
                 </div>
 
-                <div class="modal-select">
-                    <p>Year:</p>
-                    <select class="modal-select" id="year">
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                    </select>
+                <div class="modal-input">
+                    <label>Year:</label>
+                    <input type="number" id="modal-add-year" placeholder="ex: 1939">
                 </div>
 
-                <div class="modal-select">
-                    <p>Max. year:</p>
-                    <select class="modal-select" id="max-year">
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                    </select>
+                <div class="modal-input">
+                    <label>Max. Year:</label>
+                    <input type="number" id="modal-add-max-year" placeholder="ex: 1939">
                 </div>
 
-                <div class="modal-select">
-                    <p>Shape:</p>
-                    <select class="modal-select" id="shape">
-                        <option value="round">Round</option>
-                        <option value="square">Square</option>
-                    </select>
+                <div class="modal-input">
+                    <label>Shape:</label>
+                    <input type="text" id="modal-add-shape" placeholder="ex: round">
                 </div>
 
-                <div class="modal-select">
-                    <p>Composition:</p>
-                    <select class="modal-select" id="composition">
-                        <option value="copper">Copper</option>
-                    </select>
+                <div class="modal-input">
+                    <label>Composition:</label>
+                    <input type="text" id="modal-add-composition" placeholder="ex: copper">
                 </div>
             </div>
             <input id="submit-button" type="submit" value="Submit">
         </div>
     </div>
+    
+    <script src="../javascript/my_coins.js"></script>
+
 </body>
-
-<script src="../javascript/my_coins.js"></script>
-
 </html>

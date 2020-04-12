@@ -81,6 +81,7 @@ header {
 
 .main {
     margin-top: 5em;
+    width: 100%;
     display: grid;
     grid-template-columns: auto 1fr;
     min-height: 100%;
@@ -111,22 +112,37 @@ header {
 
 .filter__items {
     display: flex;
+    max-width: 120px;
     /* overflow-y: scroll; */
     flex-direction: column;
     margin: 0;
+    max-width: 13em;
     padding: 0;
     list-style: none;
+    width: 100%;
 }
 
 .filter__item {
+    display: flex;
+    flex-direction: column;
+    max-width: 15em;
     margin-top: 1em;
-    font-size: 1.2em;
+    font-size: 1em;
+}
+filter-select{
+    text-overflow: ellipsis;
 }
 
-input {
+.select-items{ 
+    text-overflow: ellipsis;
+    max-width: 15em;
+}
+.filter__items  input {
     min-width: 100%;
+}
+input, .filter-select {
     font-size: 0.7em;
-    padding: 5px 5px;
+    padding: 5px;
     margin: 8px 0;
     cursor: pointer;
     border: 1px solid rgb(254, 185, 180);
@@ -187,6 +203,10 @@ input[type="submit"]:hover {
 .coin__images img {
     width: 5em;
     height: 5em;
+}
+
+.coin__images {
+    margin-right: 10px;
 }
 
 .coin__info span {
@@ -250,8 +270,8 @@ button.coin__button:hover {
 }
 .modal-criteria{
     width: 100%;
-    height: 100%;
-    justify-content: center;
+    height: 50%;
+    justify-content: left;
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
@@ -260,11 +280,12 @@ button.coin__button:hover {
     min-width: 60%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15%;
 }
 
-.modal-select{
-    justify-content: center;
-    min-width: 40%;
+.modal-input{
+    margin: 0 30px;
+    width: 40%;
 }
 
 .close{
@@ -278,6 +299,31 @@ button.coin__button:hover {
     font-weight: bold;
 }
 
+/* Statistics */
+
+.statistics{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-left: 16em;
+}
+.statistics table{
+    margin-top: 2em;
+    width: 100%;
+}
+.statistics-button{
+    width: 25%;
+    background-color: rgb(67, 128, 164);
+    color: rgb(254, 185, 180);
+    font-size: 1em; 
+}
+
+td,tr{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
 @media screen and (max-width: 750px){
     .navbar__item__divider {
