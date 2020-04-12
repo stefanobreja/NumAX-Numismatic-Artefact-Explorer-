@@ -99,22 +99,35 @@ header {
 
 .filter__items {
     display: flex;
+    max-width: 120px;
     /* overflow-y: scroll; */
     flex-direction: column;
     margin: 0;
+    max-width: 13em;
     padding: 0;
     list-style: none;
 }
 
 .filter__item {
+    display: flex;
+    flex-direction: column;
+    max-width: 15em;
     margin-top: 1em;
-    font-size: 1.2em;
+    font-size: 1em;
+}
+.select{
+    text-overflow: ellipsis;
 }
 
-input {
+ .select-items{ 
+    text-overflow: ellipsis;
+    max-width: 15em;
+}
+
+input, .select {
     min-width: 100%;
     font-size: 0.7em;
-    padding: 5px 5px;
+    padding: 5px;
     margin: 8px 0;
     cursor: pointer;
     border: 1px solid rgb(254, 185, 180);
@@ -178,6 +191,10 @@ input[type="submit"]:hover {
     height: 5em;
 }
 
+.coin__images {
+    margin-right: 10px;
+}
+
 .coin__info span {
     display: block;
 }
@@ -239,8 +256,8 @@ button.share:hover {
 }
 .modal-criteria{
     width: 100%;
-    height: 100%;
-    justify-content: center;
+    height: 50%;
+    justify-content: left;
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
@@ -249,11 +266,12 @@ button.share:hover {
     min-width: 60%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15%;
 }
 
-.modal-select{
-    justify-content: center;
-    min-width: 40%;
+.modal-input{
+    margin: 0 30px;
+    width: 40%;
 }
 
 .close{
