@@ -11,10 +11,11 @@
  *
  */
 
-p{
+p {
     text-align: center;
 }
-p a{
+
+p a {
     color: #4281A4;
     text-decoration: none;
     cursor: pointer;
@@ -23,12 +24,13 @@ p a{
 /***** 1. Main *****/
 
 /* 1.0 html */
-html{
+html {
     height: 100%;
-   
+
 }
+
 /* 1.1 body */
-body{
+body {
     margin: 0;
     background-color: #dbe8f0;
     display: flex;
@@ -44,64 +46,71 @@ body{
 .container {
     display: flex;
     flex-direction: column;
-    background-color:#fff;
+    background-color: #fff;
     width: 380px;
-    box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.75);
 }
-.login_form{
+
+.login_form {
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
-form .form{
+
+form .form {
     margin: 0 auto;
-    width:90%;
-}
-#login_name{
-    margin-top: 20px;
-}
-#login_name,
-#login_email,
-#login_password,
-#login_repeat_password
-{
     width: 90%;
 }
 
-#login_name{
+#login_name {
+    margin-top: 20px;
+}
+
+#login_name,
+#login_email,
+#login_password,
+#login_repeat_password {
+    width: 90%;
+}
+
+#login_name {
     background-image: url('/img/user.svg');
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 315px;
     background-size: 19px;
 }
-#login_email{
+
+#login_email {
     background-image: url('/img/email-2.svg');
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 315px;
     background-size: 19px;
 }
-#login_password{
+
+#login_password {
     background-image: url('/img/password.svg');
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 315px;
     background-size: 19px;
 }
-#login_repeat_password{
+
+#login_repeat_password {
     background-image: url('/img/password.svg');
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 315px;
     background-size: 19px;
 }
+
 /* 2.1 Title */
-.title{
+.title {
     font-family: 'Segoe UI';
-    width:auto;
+    width: auto;
     text-align: left;
     padding: 5px 20px 5px;
     margin: 0;
@@ -109,7 +118,6 @@ form .form{
     color: #fff;
     font-size: 18px;
 }
-
 
 
 /* 2.3 Form */
@@ -124,20 +132,20 @@ input {
 .form input[type="password"],
 .form textarea,
 .form select {
-  border-radius: 0.25rem;
-  padding: 1rem;
-  color: #3A3F44;
-  box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.45);
+    border-radius: 0.25rem;
+    padding: 1rem;
+    color: #3A3F44;
+    box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.45);
     border: 0;
 }
 
-.buttons{
+.buttons {
     flex: 1;
     display: flex;
     flex-direction: row;
 }
 
-.buttons input{
+.buttons input {
     flex: 1;
     padding: 1.2rem;
     color: #fff;
@@ -146,27 +154,31 @@ input {
 }
 
 /* Buttons color */
-.buttons input[type="submit"], #send_track{
+.buttons input[type="submit"], #send_track {
     flex: 1;
     background-color: #4281A4;
 
 }
-.buttons input[type="button"]{
+
+.buttons input[type="button"] {
     flex: 1;
     background-color: #FE938C;
 }
-.buttons input[type="button"]:hover{
+
+.buttons input[type="button"]:hover {
     background-color: #CE7671;
 }
-.buttons input[type="submit"]:hover{
+
+.buttons input[type="submit"]:hover {
     background-color: #A5C2CE;
 }
-img{
+
+img {
     width: 25px;
     height: auto;
 }
 
-p{
+p {
     padding-left: 20px;
     color: #9CAFB7;
 }

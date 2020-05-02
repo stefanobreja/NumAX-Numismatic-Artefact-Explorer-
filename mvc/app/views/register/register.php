@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/loginForm.css">
+    <link rel="stylesheet" href="css/loginForm.css">
     <title>All the Coins!</title>
 </head>
 
@@ -35,7 +35,7 @@
                 </div>
                 <br>
                 <div class="buttons" style="padding-top:10px;">
-                    <input type="button" onclick="window.location.href = 'login.html'" value="Intra in cont">
+                    <input type="button" onclick="window.location.href = 'http://localhost/numax-php/mvc/public/login'" value="Intra in cont">
                     <input type="submit" value="Inregistreaza-te">
                 </div>
             </form>
