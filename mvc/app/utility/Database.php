@@ -34,5 +34,39 @@ class Database
         $list = $sth->fetchAll();
         print_r($list);
     }
+
+    function populateDB()
+    {
+        $getdata = http_build_query(
+            array(
+                'q' => 'romania',
+                'page' => '1',
+                'count' => '2',
+                'lang' => 'en'
+            )
+        );
+
+        $opts = array(
+            'http' => array(
+                'method' => "GET",
+                'header' => "accept: application/json \n" .
+                    "Numista-API-Key: 4RFQtlWBhBdYre1hMZ48JnVt1dIfUfsFisWkoQJA"
+            )
+        );
+        $context = stream_context_create($opts);
+
+        $jsonResponse = file_get_contents("https://api.numista.com/api/v1/coins?" . $getdata, false, $context);
+
+        $model = json_decode($jsonResponse, true);
+//        print_r(var_dump($model['coins']));
+
+        $id = $model['coins'][0]['id'];
+        $jsonResponse = file_get_contents("https://api.numista.com/api/v1/coins/$id", false, $context);
+        $model = json_decode($jsonResponse, true);
+        $picture = $model['obverse']['picture'];
+        echo "<img src=$picture alt='error'>";
+
+
+    }
 }
 
