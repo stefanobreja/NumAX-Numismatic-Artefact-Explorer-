@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS Users (
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(45) NOT NULL UNIQUE,
+  email VARCHAR(45) NOT NULL UNIQUE,
+  password VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS Coins (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(45) NULL,
+  year INT NULL,
+  country VARCHAR(45) NULL,
+  shape VARCHAR(45) NULL,
+  size VARCHAR(45) NULL,
+  weight VARCHAR(45) NULL,
+  front_picture BLOB NULL,
+  back_picture BLOB NULL,
+  material VARCHAR(45) NULL,
+  no_of_coins INT NULL)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS user_coin(
+    user_id INT NOT NULL,
+    coin_id INT NOT NULL ,
+	FOREIGN KEY (user_id) REFERENCES users(id) ,
+    FOREIGN KEY (coin_id) REFERENCES coins(id) 
+) ENGINE=INNODB;
