@@ -9,7 +9,7 @@ class Login extends Controller
 
         $db = new Database();
         $sql = 'SELECT * from user';
-        $db->getAll($sql);
+        $db->populateDB();
     }
 
     function create($username, $password, $email)

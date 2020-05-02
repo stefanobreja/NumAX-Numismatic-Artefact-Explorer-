@@ -3,6 +3,7 @@
 require_once 'core/App.php';
 require_once 'core/Controller.php';
 require_once 'utility/Database.php';
+require_once 'models/Coin.php';
 
 
 //App Config
