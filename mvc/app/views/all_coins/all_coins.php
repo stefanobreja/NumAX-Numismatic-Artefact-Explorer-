@@ -64,8 +64,8 @@
         <ul class="coin__container">
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -82,8 +82,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -100,8 +100,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -117,8 +117,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -134,8 +134,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -151,8 +151,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -168,8 +168,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -185,8 +185,8 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
+                    <img src="src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">
                         <span>
@@ -202,7 +202,7 @@
             </li>
             <li class="coin">
                 <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
+                    <img src="src/face-coin.jpg" alt="coin photo">
                     <img src="../../../public/src/back-coin.jpg" alt="coin photo">
                 </div>
                 <div class="coin__info">

@@ -6,6 +6,10 @@ class Login extends Controller
     public function index()
     {
         $this->view('login/login');
+
+        $db = new Database();
+        $sql = 'SELECT * from user';
+        $db->getAll($sql);
     }
 
     function create($username, $password, $email)
