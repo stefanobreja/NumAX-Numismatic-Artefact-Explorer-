@@ -25,3 +25,4 @@ define("DEFAULT_CONTROLLER_ACTION", "index");
 // View Config
 define("VIEW_PATH", "..\app\\views\\");
 define("DEFAULT_404_PATH", "404.php");
+$_SESSION["user"] = "";
