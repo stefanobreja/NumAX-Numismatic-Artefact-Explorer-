@@ -172,7 +172,7 @@
     </div>
 </div>
 
-<script src="../../../public/javascript/my_coins.js"></script>
+<script src="javascript/my_coins.js"></script>
 
 </body>
 </html>

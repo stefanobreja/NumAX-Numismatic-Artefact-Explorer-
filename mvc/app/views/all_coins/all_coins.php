@@ -1,3 +1,19 @@
+<?php
+$controller = new AllCoins();
+$list = $controller->list;
+
+function getX()
+{
+    if (isset($_POST['submit'])) {
+        $db = new Database();
+        $y = $db->getAllCoins()[1];
+
+        $list = $y;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +53,12 @@
             <label class="filter__label">Search by:</label>
             <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
         </div>
+        <form action="<?php
+        if (isset($_POST['submit'])) {
+            if ($_REQUEST['submit'] == 'Search') {
+                $controller->getX($controller);
+            }
+        } ?>" method="post"
         <ul class="filter__items">
             <li class="filter__item">
                 <label for="name">Name:</label>
@@ -55,222 +77,44 @@
                 <input type="text" id="shape" placeholder="ex: round">
             </li>
             <li class="filter__item">
-                <input type="submit" value="Search!">
+                <input type="submit" value="Search">
             </li>
         </ul>
+        </form>
     </aside>
-
     <main class="coins">
         <ul class="coin__container">
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                            <button class="coin__button" type="button">Add</button>
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                            <button class="coin__button" type="button">add</button>
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="../../../public/src/face-coin.jpg" alt="coin photo">
-                    <img src="../../../public/src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
+            <?php
+            for ($i = 0;
+                 $i < count($list);
+                 $i++) {
+                echo '
+                    <li class="coin">
+                        <div class="coin__images">
+                            <img src="' . $list[$i]['front_picture'] . '" alt="">
+                            <img src="' . $list[$i]['back_picture'] . '" alt="">
+                        </div>
+                        <div class="coin__info">
+                                <span>
+                                ' . $list[$i]['name'] . '
+                                </span>
+                            <span>
+                                ' . $list[$i]['min_year'] . $list[$i]['min_year'] . '
+
+                                </span>
+                            <span>
+                            ' . $list[$i]['material'] . ' | ' . $list[$i]['weight'] . 'g' . ' | ' . $list[$i]['size'] . 'mm' . '
+                                    <button class="coin__button" type="button">Add</button>
+                                </span>
+                        </div>
+                    </li>';
+            }
+
+            ?>
         </ul>
     </main>
 </div>
-</body>
+<script src="javascript/my_coins.js"></script>
 
+</body>
 </html>
