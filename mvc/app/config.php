@@ -7,6 +7,6 @@ return [
     "DATABASE_HOST" => "localhost",
     "DATABASE_NAME" => "NumAX",
     "DATABASE_USERNAME" => "root",
-    "DATABASE_PASSWORD" => "password",
+    "DATABASE_PASSWORD" => "",
 
 ];

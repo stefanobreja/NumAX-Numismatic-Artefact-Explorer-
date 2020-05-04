@@ -23,10 +23,10 @@
                 <div class="hamburger__bar3"></div>
             </li>
             <li class="navbar__item" id="navbar_selected"><a href="#">My coins</a></li>
-            <li class="navbar__item"><a href="http://localhost/numax-php/mvc/public/allcoins">All coins</a></li>
-            <li class="navbar__item"><a href="http://localhost/numax-php/mvc/public/statistics">Statistics</a></li>
+            <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
+            <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
             <li class="navbar__item__divider"></li>
-            <li class="navbar__item logout"><a href="http://localhost/numax-php/mvc/public/login">Logout</a></li>
+            <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login">Logout</a></li>
         </ul>
     </nav>
 </header>

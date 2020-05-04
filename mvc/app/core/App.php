@@ -24,14 +24,17 @@ class App
     private function _getController()
     {
         if (isset($this->_params[0]) and !empty($this->_params[0])) {
-            $this->_controller = strtolower($this->_params[0]);
+            $this->_controller = ucfirst($this->_params[0]);
             unset($this->_params[0]);
         }
         if (!file_exists('../app/controllers/' . $this->_controller . '.php')) {
             throw new Exception("The controller {$this->_controller} does not exist!");
         }
+        // print_r($this->_controller); 
         require_once '../app/controllers/' . $this->_controller . '.php';
+        $controller_name = $this->_controller;
         $this->_controller = new $this->_controller;
+        $this->_controller->loadModel($controller_name);
     }
 
     private function _getMethod()
@@ -63,7 +66,12 @@ class App
 
     public function run()
     {
-        call_user_func_array([$this->_controller, $this->_method], $this->_params);
+        if(count($this->_params)>0) {
+            $this->_controller->{$this->_method}($this->_params);
+        } else {
+            $this->_controller->{$this->_method}();
+        }
+        // call_user_func_array([$this->_controller, $this->_method], $this->_params);
     }
 
 }

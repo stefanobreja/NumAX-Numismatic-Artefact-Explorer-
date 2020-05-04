@@ -1,7 +1,7 @@
 <?php
 
 
-class UserLogin
+class Login_model extends Model
 {
     private $username;
 

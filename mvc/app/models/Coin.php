@@ -1,6 +1,6 @@
 <?php
 
-class coin
+class Coin_model extends Model
 {
     public $id;
     public $title;

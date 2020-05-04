@@ -2,6 +2,10 @@
 
 class Login extends Controller
 {
+    function __construct() {
+        print_r("login controller");
+        parent::__construct();
+    }
 
     public function index()
     {

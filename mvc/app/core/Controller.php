@@ -2,13 +2,23 @@
 
 class Controller
 {
-    protected $View = null;
+    // protected $view;
+    protected $model;
 
     public function __construct()
     {
-        if (session_id() == "") {
-            session_start();
-            $_SESSION['login'] = "";
+        // if (session_id() == "") {
+        //     session_start();
+        //     $_SESSION['login'] = "";
+        // }
+    }
+
+    function loadModel($name) {
+        $path = '../app/models/' .$name. '.php';
+        if(file_exists($path)) {
+            require $path;
+        $modelName = $name . "_model";
+            $this->model = new $modelName();
         }
     }
 

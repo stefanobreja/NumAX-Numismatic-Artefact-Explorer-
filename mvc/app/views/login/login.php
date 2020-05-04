@@ -26,9 +26,9 @@
             </div>
             <p><a href="#">Ai uitat parola?</a></p>
             <div class="buttons">
-                <input type="button" onclick="window.location.href = 'http://localhost/numax-php/mvc/public/register'"
+                <input type="button" onclick="window.location.href = 'http://localhost/numax/mvc/public/register'"
                        value="Inregistreaza-te">
-                <input type="submit" onclick="window.location.href = 'http://localhost/numax-php/mvc/public/mycoins'"
+                <input type="submit" onclick="window.location.href = 'http://localhost/numax/mvc/public/mycoins'"
                        name="op" value="Intra in cont">
             </div>
         </form>

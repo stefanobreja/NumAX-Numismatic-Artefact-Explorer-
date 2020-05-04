@@ -1,6 +1,6 @@
 <?php
 
-class MyCoins extends Controller
+class Mycoins extends Controller
 {
     public function index()
     {

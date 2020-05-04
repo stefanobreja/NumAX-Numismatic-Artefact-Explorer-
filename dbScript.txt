@@ -16,8 +16,7 @@ CREATE TABLE IF NOT EXISTS Coins (
   weight VARCHAR(45) NULL,
   front_picture BLOB NULL,
   back_picture BLOB NULL,
-  material VARCHAR(45) NULL,
-  no_of_coins INT NULL)
+  material VARCHAR(45) NULL)
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS user_coin(
