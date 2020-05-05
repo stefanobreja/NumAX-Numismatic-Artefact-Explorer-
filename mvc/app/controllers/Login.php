@@ -3,47 +3,52 @@
 class Login extends Controller
 {
     function __construct() {
-        print_r("login controller");
+        // print_r("login controller");
         parent::__construct();
+        if(Session::get("error") != "Invalid username or password!") {
+            Session::set("error","");
+        }
+        if (Session::get("isLogged") == true) {
+            header("location: /numax/mvc/public/mycoins");
+        }
     }
 
     public function index()
     {
         $this->view('login/login');
-        $db = new Database();
-        $db->populateDB('romania');
+        // $db = new Database();
+        // $db->populateDB('romania');
     }
 
-    function create($username, $password, $email)
-    {
-
-    }
-
-    function authenticate()
-    {
-        if ($username = isset($_REQUEST['email']) && $password = isset($_REQUEST['password'])) {
-            if ($this->isValidLogin($username, $password)) {
-                session_start();
-                $user = new UserLogin($username);
-                $_SESSION['user'] = $user;
-                return true;
+    function authenticate() {
+        if (Session::get("isLogged") == null || Session::get("isLogged") == false) {
+            echo "ajung aici";
+            if (isset($_POST['username']) && isset($_POST['pass'])) {
+                $username = $_POST['username'];
+                $password = $_POST['pass'];
+                if ($this->model->check_user_in_db($username,$password) == true) {
+                    Session::set("username",$username);
+                    Session::set("password",$password);
+                    Session::set("isLogged",true);
+                    Session::set("error","");
+                    // Session::destroy();
+                    header("location: /numax/mvc/public/mycoins");
+                } else {
+                    Session::set("error","Invalid username or password!");
+                    header("location: /numax/mvc/public/login");
+                }
             }
+        } else {
+            Session::set("error","");
+            header("location: /numax/mvc/public/mycoins");
         }
     }
 
-    static function isValidLogin($user, $pass)
-    {
-        $authentic = false;
-        if ($user == 'user' && $pass == 'pass')
-            $authentic = true;
-        return $authentic;
-
-    }
-
-    function logout()
-    {
-        session_start();
-        session_destroy();
+    function logout() {
+        Session::set("error","");
+        Session::set("isLogged",false);
+        Session::destroy();
+        header("location: /numax/mvc/public/login");
     }
 
 }

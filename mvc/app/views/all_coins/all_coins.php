@@ -42,7 +42,7 @@ function getX()
             <li class="navbar__item" id="navbar_selected"><a href="#">All coins</a></li>
             <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
             <li class="navbar__item__divider"></li>
-            <li class="navbar__item logout"><a href="#">Logout</a></li>
+            <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
 
         </ul>
     </nav>

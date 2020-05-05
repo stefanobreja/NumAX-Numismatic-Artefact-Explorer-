@@ -4,7 +4,10 @@ class Register extends Controller
 {
     function __construct(){
         parent::__construct();
-        Session::init();
+        // Session::init();
+        if(Session::get("error") == "Invalid username or password!") {
+            Session::set("error","");
+        }
     }
 
     public function index()
@@ -18,23 +21,23 @@ class Register extends Controller
             $email = $_POST['email'];
             $password = $_POST['pass'];
             $repeat_password = $_POST['repeat_pass'];
-            echo $username,$email,$password;
             if($password != $repeat_password) {
+                Session::set("error","Passwords don't match!");
                 header("location: /numax/mvc/public/register");
-                echo "<p>Passwords don't match!</p>";
             } else {
                 if($this->model->check_user_exists($username) == true) {
+                    Session::set("error","Username already exists!");
                     header("location: /numax/mvc/public/register");
-                    echo "<p>Username already exists! Choose another one</p>";  
                 } else {
                     $this->model->register($username,$email,$password);
+                    Session::set("error","");
+                    Session::destroy();
                     header("location: /numax/mvc/public/login");
-                    echo "<p>Acccount created!</p>";
                 }
             }
         } else {
+            Session::set("error","Fill all the fields!");
             header("location: /numax/mvc/public/register");
-            echo "<p>Fill all the fields!</p>";
         }
     }
 }

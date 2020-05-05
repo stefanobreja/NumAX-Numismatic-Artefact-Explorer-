@@ -3,13 +3,14 @@
 
 class App
 {
-    protected $_controller = 'mycoins';
+    protected $_controller = 'Login';
     protected $_method = 'index';
     protected $_params = [];
 
     public function __construct()
     {
         $this->parseUrl();
+        // print_r($this->_params);
         try {
             $this->_getController();
             $this->_getMethod();
@@ -59,14 +60,15 @@ class App
     public function parseUrl()
     {
         if ($url = isset($_GET['url']) ? $_GET['url'] : '') {
-
+            // echo rtrim($url, "/");
+            // header("location: " . rtrim($url, "/"));
             $this->_params = explode("/", filter_var(rtrim($url, "/"), FILTER_SANITIZE_URL));
         }
     }
 
     public function run()
     {
-        if(count($this->_params)>0) {
+        if(count($this->_params) > 0) {
             $this->_controller->{$this->_method}($this->_params);
         } else {
             $this->_controller->{$this->_method}();

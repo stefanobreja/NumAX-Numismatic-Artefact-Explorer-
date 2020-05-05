@@ -26,7 +26,7 @@
             <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
             <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
             <li class="navbar__item__divider"></li>
-            <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login">Logout</a></li>
+            <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
         </ul>
     </nav>
 </header>
@@ -76,58 +76,33 @@
 
     <main class="coins">
         <ul class="coin__container">
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                            <button class="coin__button" type="button">share</button>
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
-            <li class="coin">
-                <div class="coin__images">
-                    <img src="src/face-coin.jpg" alt="coin photo">
-                    <img src="src/back-coin.jpg" alt="coin photo">
-                </div>
-                <div class="coin__info">
-                        <span>
-                            1 Apsar The Dormition Cathedral of Dranda
-                        </span>
-                    <span>
-                            1935
-                        </span>
-                    <span>
-                            Bronze | 2.3g | 18.6mm
-                        </span>
-                </div>
-            </li>
+        <?php 
+            $coins = $this->getCoins();
+            // print_r($coins);
+            foreach($coins as $coin) {
+                // pictures
+                echo '<li class="coin"> <div class="coin__images">';
+                echo '<img src="' . $coin['front_picture'] . '" alt="coin photo">';
+                echo '<img src="' . $coin['back_picture'] . '" alt="coin photo"></div>';
+                // info
+                echo '<div class="coin__info">';
+                echo '<span>' . $coin['name'] . '</span>';
+                if($coin['min_year'] == 0) {
+                    $year = "Unkown";
+                } else $year = $coin['min_year'];
+                if($coin['max_year'] != 0) {
+                    $year = $year . " - " . $coin['max_year'];
+                }
+                echo '<span>' . $year . '</span>';
+                if($coin['size'] != 0) 
+                    $size = $coin['size'];
+                else $size = "Unkown";
+                if($coin['weight'] != 0) 
+                    $weight = $coin['weight'];
+                else $weight = "Unkown";
+                echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g <button class="coin__button" type="button">share</button></span>';
+            }
+            ?>
         </ul>
     </main>
 </div>
