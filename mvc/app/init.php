@@ -3,7 +3,9 @@
 require_once 'core/App.php';
 require_once 'core/Controller.php';
 require_once 'utility/Database.php';
-require_once 'models/Coin.php';
+require_once 'core/Model.php';
+// require_once 'models/Coin.php';
+require_once 'core/Session.php';
 
 
 //App Config
@@ -25,4 +27,4 @@ define("DEFAULT_CONTROLLER_ACTION", "index");
 // View Config
 define("VIEW_PATH", "..\app\\views\\");
 define("DEFAULT_404_PATH", "404.php");
-$_SESSION["user"] = "";
+// $_SESSION["user"] = "";

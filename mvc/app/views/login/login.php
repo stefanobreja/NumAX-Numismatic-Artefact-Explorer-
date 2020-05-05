@@ -14,10 +14,10 @@
         <h4>Autentificare</h4>
     </div>
     <div class="log_in">
-        <form method="POST" class="login_form">
+        <form method="POST" class="login_form" action="login/authenticate">
             <div class="form">
                 <br>
-                <input id="login_email" type="text" name='email' class="form_input" placeholder="Email" required>
+                <input id="login_email" type="text" name='username' class="form_input" placeholder="Username" required>
             </div>
             <div class="form">
                 <br>
@@ -26,12 +26,14 @@
             </div>
             <p><a href="#">Ai uitat parola?</a></p>
             <div class="buttons">
-                <input type="button" onclick="window.location.href = 'http://localhost/numax-php/mvc/public/register'"
+                <input type="button" onclick="window.location.href = 'http://localhost/numax/mvc/public/register'"
                        value="Inregistreaza-te">
-                <input type="submit" onclick="window.location.href = 'http://localhost/numax-php/mvc/public/mycoins'"
-                       name="op" value="Intra in cont">
+                <input type="submit" value="Intra in cont">
             </div>
         </form>
+    </div>
+    <div class="error">
+        <?php echo Session::get("error") ?>
     </div>
 </div>
 </body>

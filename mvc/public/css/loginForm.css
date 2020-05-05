@@ -29,6 +29,11 @@ html {
 
 }
 
+.error {
+    margin-top: 1em;
+    text-align: center;
+    color: red;
+}
 /* 1.1 body */
 body {
     margin: 0;
@@ -65,7 +70,7 @@ form .form {
 }
 
 #login_name {
-    margin-top: 20px;
+    margin-top: 1em;
 }
 
 #login_name,
@@ -76,7 +81,7 @@ form .form {
 }
 
 #login_name {
-    background-image: url('/img/user.svg');
+    /* background-image: url('/img/user.svg'); */
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 315px;
@@ -84,7 +89,7 @@ form .form {
 }
 
 #login_email {
-    background-image: url('/img/email-2.svg');
+    /* background-image: url('/img/email-2.svg'); */
     background-position: right;
     background-repeat: no-repeat;
     background-position-x: 315px;

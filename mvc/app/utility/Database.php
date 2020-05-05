@@ -4,16 +4,19 @@ class Database
 {
 
     private static $_Database = null;
-    private $_PDO = null;
+    public $_PDO;
 
     function __construct()
     {
         try {
             $host = "localhost";
-            $name = "NumAX";
+            $name = "numax";
             $username = "root";
             $password = "";
             $this->_PDO = new PDO("mysql:host={$host};dbname={$name}", $username, $password);
+            // $this->_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $this->_PDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            // $this->_PDO->setAttribute(PDO::ATTR_PERSISTENT, TRUE);
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -66,10 +69,8 @@ class Database
                     $material = array_key_exists('text', $coinDetails['composition']) ? $coinDetails['composition']['text'] : "Unknown";
                 }
 
-                $no_of_coins = 0;
-
-                $sql = 'INSERT INTO coins (name,min_year,max_year,country,shape,size,weight,front_picture,back_picture,material,no_of_coins)
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+                $sql = 'INSERT INTO coins (name,min_year,max_year,country,shape,size,weight,front_picture,back_picture,material)
+                    VALUES (?,?,?,?,?,?,?,?,?,?)';
                 $stm = $this->_PDO->prepare($sql);
                 $stm->bindValue(1, $title);
                 $stm->bindValue(2, $min_year);
@@ -81,7 +82,6 @@ class Database
                 $stm->bindValue(8, $front_picture);
                 $stm->bindValue(9, $back_picture);
                 $stm->bindValue(10, $material);
-                $stm->bindValue(11, $no_of_coins);
 
                 $stm->execute();
             }

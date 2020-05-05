@@ -2,25 +2,23 @@
 
 class Controller
 {
-    protected $View = null;
+    protected $model;
 
-    public function __construct()
-    {
-        if (session_id() == "") {
-            session_start();
-            $_SESSION['login'] = "";
+    public function __construct() {
+        Session::init();
+    }
+
+    function loadModel($name) {
+        $path = '../app/models/' .$name. '.php';
+        if(file_exists($path)) {
+            require_once $path;
+            $modelName = $name . "_model";
+            $this->model = new $modelName();
         }
     }
 
-    function view($view, $data = array())
-    {
-//        if ($_SESSION['login'] != "") {
+    function view($view, $data = array()) {
         require_once '../app/views/' . $view . '.php';
-//        } else {
-//            print $_SESSION['login'];
-//            require_once '../app/views/login/Login.php';
-//        }
-
     }
 
 }

@@ -129,7 +129,8 @@ header {
     margin-top: 1em;
     font-size: 1em;
 }
-filter-select{
+
+.filter-select{
     text-overflow: ellipsis;
 }
 
@@ -170,13 +171,14 @@ input[type="submit"]:hover {
 
 .coins {
     margin-top: 2em;
-    margin-left: 15em;
+    margin-left: 17em;
 }
 
 .coin__container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-content: space-between;
     list-style: none;
     margin: 0; 
     padding: 0;
@@ -188,7 +190,8 @@ input[type="submit"]:hover {
     justify-content: space-evenly;
     padding: 1em 1em 1em 1em;
     margin-bottom: 2em;
-    min-width: 35%;
+    min-width: 48%;
+    /* max-width: 45%; */
     border: thick double rgb(67, 128, 164);
     box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
     border-radius: 2em;
@@ -400,6 +403,10 @@ td,tr{
     .coins {
         margin-left: 2.5em;
     }
+    .coin {
+        text-align: center;
+        min-width: 20%;
+    }
 }
 
 @media screen and (max-width:530px) {
@@ -407,5 +414,6 @@ td,tr{
         display: flex;
         flex-direction: column;
         align-items: center;
+        
     }
 }

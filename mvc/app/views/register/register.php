@@ -14,9 +14,9 @@
             <h4>Inregistrare</h4>
         </div>
         <div class="log_in">
-            <form method="POST" action="#" class="login_form">
+            <form method="POST" action="register/register" class="login_form">
                 <div class="form">
-                    <input id="login_name" name='name' type="text" class="form_input" placeholder="Nume complet"
+                    <input id="login_name" name='name' type="text" class="form_input" placeholder="Username"
                         required>
                 </div>
                 <div class="form">
@@ -35,11 +35,14 @@
                 </div>
                 <br>
                 <div class="buttons" style="padding-top:10px;">
-                    <input type="button" onclick="window.location.href = 'http://localhost/numax-php/mvc/public/login'" value="Intra in cont">
+                    <input type="button" onclick="window.location.href = 'http://localhost/numax/mvc/public/login'" value="Intra in cont">
                     <input type="submit" value="Inregistreaza-te">
                 </div>
             </form>
         </div>
+        <div class="error">
+        <?php echo Session::get("error") ?>
+    </div>
     </div>
 </body>
 
