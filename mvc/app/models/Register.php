@@ -3,7 +3,6 @@
 class Register_model extends Model {
     public function __construct(){
         parent::__construct();
-        // print_r("register model apelat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     function check_user_exists($username) {
