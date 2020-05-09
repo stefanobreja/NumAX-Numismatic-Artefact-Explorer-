@@ -22,6 +22,7 @@ class Login extends Controller
 
     function authenticate() {
         if (Session::get("isLogged") == null || Session::get("isLogged") == false) {
+            echo Session::get("isLogged");
             echo "ajung aici";
             if (isset($_POST['username']) && isset($_POST['pass'])) {
                 $username = $_POST['username'];

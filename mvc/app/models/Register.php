@@ -3,7 +3,6 @@
 class Register_model extends Model {
     public function __construct(){
         parent::__construct();
-        // print_r("register model apelat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     function check_user_exists($username) {
@@ -11,6 +10,7 @@ class Register_model extends Model {
         $stm = $this->db->prepare($sql_query);
         $stm->bindValue(1,$username);
         $stm->execute();
+
         if($stm->rowCount() > 0) {
             return true;
         } else {

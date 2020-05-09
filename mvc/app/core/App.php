@@ -9,6 +9,7 @@ class App
 
     public function __construct()
     {
+        $db = new Database();
         $this->parseUrl();
         // print_r($this->_params);
         try {

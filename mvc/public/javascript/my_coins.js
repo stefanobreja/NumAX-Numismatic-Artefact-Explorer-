@@ -23,6 +23,8 @@ function arrowPressed() {
     document.getElementsByClassName("filter__arrow")[0].classList.toggle("hide");
 }
 
-function search(){
-    getX()
-}
+function getImage(blob) {
+    var image = new Image();
+    image.src = URL.createObjectURL(blob);
+    
+ }

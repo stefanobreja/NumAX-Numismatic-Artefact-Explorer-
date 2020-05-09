@@ -261,7 +261,8 @@ button.coin__button:hover {
 
 #title-modal{
     color: rgb(67, 128, 164);
-    padding-left: 30px;
+    padding-left: 5%;
+    font-weight: 600;
 }
 #search{
     border: 0px;
@@ -271,24 +272,38 @@ button.coin__button:hover {
 #search::placeholder{
     color: rgb(254, 185, 180);
 }
-.modal-criteria{
+.modal-criteria form{
     width: 100%;
-    height: 50%;
+    height: 100%;
     justify-content: left;
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
 }
 .modal-content #submit-button{
-    min-width: 60%;
+    margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15%;
+    min-width: 60%;
 }
 
 .modal-input{
-    margin: 0 30px;
+    margin: auto;
     width: 40%;
+}
+
+.modal-input label {
+    display: block;
+}
+
+.modal-input input {
+    width: 100%;
+}
+
+.modal-input .file {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
 }
 
 .close{

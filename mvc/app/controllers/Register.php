@@ -21,6 +21,7 @@ class Register extends Controller
             $email = $_POST['email'];
             $password = $_POST['pass'];
             $repeat_password = $_POST['repeat_pass'];
+
             if($password != $repeat_password) {
                 Session::set("error","Passwords don't match!");
                 header("location: /numax/mvc/public/register");

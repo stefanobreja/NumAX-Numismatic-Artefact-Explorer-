@@ -79,11 +79,12 @@ class Database
                 $stm->bindValue(5, $shape);
                 $stm->bindValue(6, $size);
                 $stm->bindValue(7, $weight);
-                $stm->bindValue(8, $front_picture);
-                $stm->bindValue(9, $back_picture);
+                $stm->bindValue(8, file_get_contents($front_picture));
+                $stm->bindValue(9, file_get_contents($back_picture));
                 $stm->bindValue(10, $material);
 
                 $stm->execute();
+                $stm->errorInfo();
             }
         }
     }
@@ -95,7 +96,7 @@ class Database
             array(
                 'q' => $q,
                 'page' => '1',
-                'count' => '100',
+                'count' => '5',
                 'lang' => 'en'
             )
         );

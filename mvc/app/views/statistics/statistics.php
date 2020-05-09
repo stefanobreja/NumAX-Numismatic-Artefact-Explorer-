@@ -17,11 +17,11 @@
     <!-- <div class="welcome">Welcome, User!</div> -->
     <nav class="navbar">
         <ul class="navbar__items">
-            <li class="navbar__item"><a href="http://localhost/numax-php/mvc/public/mycoins">My coins</a></li>
-            <li class="navbar__item"><a href="http://localhost/numax-php/mvc/public/allcoins">All coins</a></li>
+            <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
+            <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
             <li class="navbar__item" id="navbar_selected">Statistics</li>
             <li class="navbar__item__divider"></li>
-            <li class="navbar__item logout"><a href="http://localhost/numax-php/mvc/public/login">Logout</a></li>
+            <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login">Logout</a></li>
         </ul>
     </nav>
 </header>

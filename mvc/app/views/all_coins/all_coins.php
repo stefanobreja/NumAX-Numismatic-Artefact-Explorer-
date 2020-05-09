@@ -23,76 +23,85 @@ function getX()
     <link rel="stylesheet" href="css/main.css">
     <title>All the Coins!</title>
 </head>
+
 <body>
 
-<header class="header">
-    <!-- <div class="logo-image">
+    <header class="header">
+        <!-- <div class="logo-image">
         <img src="./logo3.jpg" alt="logo-image">
     </div> -->
-    <div class="logo">NumAX</div>
-    <!-- <div class="welcome">Welcome, User!</div> -->
-    <nav class="navbar">
-        <ul class="navbar__items">
-            <li id="hamburger__menu" onclick="hamburgerMenuOnClick()">
-                <div class="hamburger__bar1"></div>
-                <div class="hamburger__bar2"></div>
-                <div class="hamburger__bar3"></div>
-            </li>
-            <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
-            <li class="navbar__item" id="navbar_selected"><a href="#">All coins</a></li>
-            <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
-            <li class="navbar__item__divider"></li>
-            <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
+        <div class="logo">NumAX</div>
+        <!-- <div class="welcome">Welcome, User!</div> -->
+        <nav class="navbar">
+            <ul class="navbar__items">
+                <li id="hamburger__menu" onclick="hamburgerMenuOnClick()">
+                    <div class="hamburger__bar1"></div>
+                    <div class="hamburger__bar2"></div>
+                    <div class="hamburger__bar3"></div>
+                </li>
+                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="#">All coins</a></li>
+                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
+                <li class="navbar__item__divider"></li>
+                <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
 
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <aside class="filter">
-        <div class="filter__title">
-            <label class="filter__label">Search by:</label>
-            <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
-        </div>
-        <form action="<?php
-        if (isset($_POST['submit'])) {
-            if ($_REQUEST['submit'] == 'Search') {
-                $controller->getX($controller);
-            }
-        } ?>" method="post"
-        <ul class="filter__items">
-            <li class="filter__item">
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="ex: 100 Lei - Carol II">
-            </li>
-            <li class="filter__item">
-                <label for="year">Year:</label>
-                <input type="number" id="year" placeholder="ex: 1939">
-            </li>
-            <li class="filter__item">
-                <label for="country">Country:</label>
-                <input type="text" id="country" placeholder="ex: Romania">
-            </li>
-            <li class="filter__item">
-                <label for="shape">Shape:</label>
-                <input type="text" id="shape" placeholder="ex: round">
-            </li>
-            <li class="filter__item">
-                <input type="submit" value="Search">
-            </li>
-        </ul>
-        </form>
-    </aside>
-    <main class="coins">
-        <ul class="coin__container">
-            <?php
-            for ($i = 0;
-                 $i < count($list);
-                 $i++) {
-                echo '
+            </ul>
+        </nav>
+    </header>
+    <div class="main">
+        <aside class="filter">
+            <div class="filter__title">
+                <label class="filter__label">Search by:</label>
+                <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
+            </div>
+            <form action="<?php
+                            if (isset($_POST['submit'])) {
+                                if ($_REQUEST['submit'] == 'Search') {
+                                    $controller->getX($controller);
+                                }
+                            } ?>" method="post" <ul` class="filter__items">
+                <li class="filter__item">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="ex: 100 Lei - Carol II">
+                </li>
+                <li class="filter__item">
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" placeholder="ex: 1939">
+                </li>
+                <li class="filter__item">
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" placeholder="ex: Romania">
+                </li>
+                <li class="filter__item">
+                    <label for="shape">Shape:</label>
+                    <input type="text" id="shape" placeholder="ex: round">
+                </li>
+                <li class="filter__item">
+                    <input type="submit" value="Search">
+                </li>
+                </ul>
+            </form>
+        </aside>
+        <main class="coins">
+            <ul class="coin__container">
+                <?php
+                for (
+                    $i = 0;
+                    $i < count($list);
+                    $i++
+                ) {
+                    $fImage = $list[$i]['front_picture'];
+                    $bImage = $list[$i]['back_picture'];
+                    $encFrontIamge = base64_encode($fImage);
+                    $encBackIamge = base64_encode($bImage);
+                    $frontImg = "<img src='data:image/jpeg;base64,{$encFrontIamge}' alt=''>";
+                    $backImg = "<img src='data:image/jpeg;base64,{$encBackIamge}' alt=''>";
+
+                    echo '
                     <li class="coin">
                         <div class="coin__images">
-                            <img src="' . $list[$i]['front_picture'] . '" alt="">
-                            <img src="' . $list[$i]['back_picture'] . '" alt="">
+                        ' . $frontImg . '
+                        ' . $backImg . '
                         </div>
                         <div class="coin__info">
                                 <span>
@@ -108,13 +117,21 @@ function getX()
                                 </span>
                         </div>
                     </li>';
-            }
+                }
 
-            ?>
-        </ul>
-    </main>
-</div>
-<script src="javascript/my_coins.js"></script>
+                ?>
+            </ul>
+        </main>
+    </div>
+    <script src="javascript/my_coins.js"></script>
 
+    <script>
+        function show(blob) {
+            var image = new Image();
+            image.src = URL.createObjectURL(blob);
+            document.getElementById("front-image").src = image;
+        }
+    </script>
 </body>
+
 </html>
