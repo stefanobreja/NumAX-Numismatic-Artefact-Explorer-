@@ -26,7 +26,7 @@ $coins = $this->getCoins();
                     <div class="hamburger__bar2"></div>
                     <div class="hamburger__bar3"></div>
                 </li>
-                <li class="navbar__item" id="navbar_selected"><a href="#">My coins</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
                 <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
                 <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
@@ -35,84 +35,56 @@ $coins = $this->getCoins();
         </nav>
     </header>
     <div class="main">
-
         <aside class="filter">
             <div class="filter__title">
                 <label class="filter__label">Search by:</label>
                 <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
             </div>
             <ul class="filter__items">
-                <li class="filter__item">
-                    <label>Name</label>
-                    <select class="filter-select" id="filter-name">
-                        <?php
-                        foreach ($coins as $coin) {
-                            echo '<option class="select-items" value="' . $coin['name'] . '">' . $coin['name'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </li>
-                <li class="filter__item">
-                    <label>Min year</label>
-                    <select class="filter-select" id="filter-year">
-                        <?php
-                        foreach ($coins as $coin) {
-                            echo '<option class="select-items" value="' . $coin['min_year'] . '">' . $coin['min_year'] . '</option>';
-                        }
-                        ?>
-                        <!--                    <option class="select-items" value="1935">1935</option> -->
-                    </select>
-                </li>
-
-                <li class="filter__item">
-                    <label>Max year</label>
-                    <select class="filter-select" id="filter-year">
-                        <?php
-                        foreach ($coins as $coin) {
-                            echo '<option class="select-items" value="' . $coin['max_year'] . '">' . $coin['max_year'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </li>
-                <li class="filter__item">
-                    <label>Country</label>
-                    <select class="filter-select" id="filter-country">
-                    <?php
-                        foreach ($coins as $coin) {
-                            echo '<option class="select-items" value="' . $coin['country'] . '">' . $coin['country'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </li>
-                <li class="filter__item">
-                    <label>Shape</label>
-                    <select class="filter-select" id="filter-shape">
-                        <option class="select-items" value="round">Round</option>
-                    </select>
+                <form action="mycoins" . <?php $this->searched_coins() ?> method="post">
+                    <li class="filter__item">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="ex: 100 Lei - Carol II">
+                    </li>
+                    <li class="filter__item">
+                        <label for="year">Min Year - Max Year:</label>
+                        <input type="text" id="year" name="year" placeholder="ex: 1939-1950">
+                    </li>
+                    <li class="filter__item">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="ex: Romania">
+                    </li>
+                    <li class="filter__item">
+                        <label for="shape">Shape:</label>
+                        <input type="text" id="shape" name="shape" placeholder="ex: round">
+                    </li>
+                    <li class="filter__item">
+                        <label for="material">Material:</label>
+                        <input type="text" id="material" name="material" placeholder="ex: copper">
+                    </li>
+                    <li class="filter__item">
+                        <input type="submit" value="Search">
+                    </li>
+                </form>
                 <li id="button-add" class="filter__item">
                     <input type="submit" value="Add a new coin">
                 </li>
-                <li class="filter__item">
-                    <input type="submit" value="Search!">
-                </li>
-
             </ul>
         </aside>
 
         <main class="coins">
             <ul class="coin__container">
                 <?php
-
+                $coins = $this->getCoins();
                 // print_r($coins);
                 foreach ($coins as $coin) {
-
+                    // pictures
                     $fImage = $coin['front_picture'];
                     $bImage = $coin['back_picture'];
                     $encFrontIamge = base64_encode($fImage);
                     $encBackIamge = base64_encode($bImage);
                     $frontImg = "<img src='data:image/jpeg;base64,{$encFrontIamge}' alt=''>";
                     $backImg = "<img src='data:image/jpeg;base64,{$encBackIamge}' alt=''>";
-                    // pictures
                     echo '<li class="coin"> <div class="coin__images">';
                     echo $frontImg;
                     echo $backImg;
@@ -198,6 +170,8 @@ $coins = $this->getCoins();
             </div>
 
         </div>
+    </div>
+    </div>
     </div>
 
     <script src="javascript/my_coins.js"></script>

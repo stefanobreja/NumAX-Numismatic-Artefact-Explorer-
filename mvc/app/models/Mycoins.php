@@ -5,7 +5,6 @@ class Mycoins_model extends Model
     function __construct()
     {
         parent::__construct();
-        // echo "mycoins model";
     }
 
     function get_user_coins($username)
