@@ -88,6 +88,7 @@ $coins = $this->getCoins();
                     echo '<li class="coin"> <div class="coin__images">';
                     echo $frontImg;
                     echo $backImg;
+                    echo '</div>';
                     // info
                     echo '<div class="coin__info">';
                     echo '<span>' . $coin['name'] . '</span>';
@@ -110,6 +111,7 @@ $coins = $this->getCoins();
             </ul>
         </main>
     </div>
+
     <!-- Modal section -->
     <div class="modal-add-coin">
         <div class="modal-content">

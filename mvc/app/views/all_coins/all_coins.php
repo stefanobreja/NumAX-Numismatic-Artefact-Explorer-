@@ -83,6 +83,7 @@
                     echo '<li class="coin"> <div class="coin__images">';
                     echo $frontImg;
                     echo $backImg;
+                    echo '</div>';
                     // info
                     echo '<div class="coin__info">';
                     echo '<span>' . $coin['name'] . '</span>';
