@@ -1,19 +1,3 @@
-<?php
-$controller = new AllCoins();
-$list = $controller->list;
-
-function getX()
-{
-    if (isset($_POST['submit'])) {
-        $db = new Database();
-        $y = $db->getAllCoins()[1];
-
-        $list = $y;
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +24,7 @@ function getX()
                     <div class="hamburger__bar3"></div>
                 </li>
                 <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
-                <li class="navbar__item" id="navbar_selected"><a href="#">All coins</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
                 <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
                 <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
@@ -54,71 +38,70 @@ function getX()
                 <label class="filter__label">Search by:</label>
                 <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
             </div>
-            <form action="<?php
-                            if (isset($_POST['submit'])) {
-                                if ($_REQUEST['submit'] == 'Search') {
-                                    $controller->getX($controller);
-                                }
-                            } ?>" method="post" <ul` class="filter__items">
-                <li class="filter__item">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" placeholder="ex: 100 Lei - Carol II">
-                </li>
-                <li class="filter__item">
-                    <label for="year">Year:</label>
-                    <input type="number" id="year" placeholder="ex: 1939">
-                </li>
-                <li class="filter__item">
-                    <label for="country">Country:</label>
-                    <input type="text" id="country" placeholder="ex: Romania">
-                </li>
-                <li class="filter__item">
-                    <label for="shape">Shape:</label>
-                    <input type="text" id="shape" placeholder="ex: round">
-                </li>
-                <li class="filter__item">
-                    <input type="submit" value="Search">
-                </li>
-                </ul>
-            </form>
+            <ul class="filter__items">
+                <form action="allcoins" . <?php $this->searched_coins() ?> method="post">
+                    <li class="filter__item">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="ex: 100 Lei - Carol II">
+                    </li>
+                    <li class="filter__item">
+                        <label for="year">Min Year - Max Year:</label>
+                        <input type="text" id="year" name="year" placeholder="ex: 1939-1950">
+                    </li>
+                    <li class="filter__item">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="ex: Romania">
+                    </li>
+                    <li class="filter__item">
+                        <label for="shape">Shape:</label>
+                        <input type="text" id="shape" name="shape" placeholder="ex: round">
+                    </li>
+                    <li class="filter__item">
+                        <label for="material">Material:</label>
+                        <input type="text" id="material" name="material" placeholder="ex: copper">
+                    </li>
+                    <li class="filter__item">
+                        <input type="submit" value="Search">
+                    </li>
+                </form>
+            </ul>
         </aside>
         <main class="coins">
             <ul class="coin__container">
                 <?php
-                for (
-                    $i = 0;
-                    $i < count($list);
-                    $i++
-                ) {
-                    $fImage = $list[$i]['front_picture'];
-                    $bImage = $list[$i]['back_picture'];
+                $coins = $this->getCoins();
+                // print_r($coins);
+                foreach ($coins as $coin) {
+                    $fImage = $coin['front_picture'];
+                    $bImage = $coin['back_picture'];
                     $encFrontIamge = base64_encode($fImage);
                     $encBackIamge = base64_encode($bImage);
                     $frontImg = "<img src='data:image/jpeg;base64,{$encFrontIamge}' alt=''>";
                     $backImg = "<img src='data:image/jpeg;base64,{$encBackIamge}' alt=''>";
 
-                    echo '
-                    <li class="coin">
-                        <div class="coin__images">
-                        ' . $frontImg . '
-                        ' . $backImg . '
-                        </div>
-                        <div class="coin__info">
-                                <span>
-                                ' . $list[$i]['name'] . '
-                                </span>
-                            <span>
-                                ' . $list[$i]['min_year'] . $list[$i]['min_year'] . '
-
-                                </span>
-                            <span>
-                            ' . $list[$i]['material'] . ' | ' . $list[$i]['weight'] . 'g' . ' | ' . $list[$i]['size'] . 'mm' . '
-                                    <button class="coin__button" type="button">Add</button>
-                                </span>
-                        </div>
-                    </li>';
+                    // pictures
+                    echo '<li class="coin"> <div class="coin__images">';
+                    echo $frontImg;
+                    echo $backImg;
+                    echo '</div>';
+                    // info
+                    echo '<div class="coin__info">';
+                    echo '<span>' . $coin['name'] . '</span>';
+                    if ($coin['min_year'] == 0) {
+                        $year = "Unkown";
+                    } else $year = $coin['min_year'];
+                    if ($coin['max_year'] != 0) {
+                        $year = $year . " - " . $coin['max_year'];
+                    }
+                    echo '<span>' . $year . '</span>';
+                    if ($coin['size'] != 0)
+                        $size = $coin['size'];
+                    else $size = "Unkown";
+                    if ($coin['weight'] != 0)
+                        $weight = $coin['weight'];
+                    else $weight = "Unkown";
+                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g <button class="coin__button" type="button">share</button></span>';
                 }
-
                 ?>
             </ul>
         </main>
