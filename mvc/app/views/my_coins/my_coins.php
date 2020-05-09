@@ -22,7 +22,7 @@
                 <div class="hamburger__bar2"></div>
                 <div class="hamburger__bar3"></div>
             </li>
-            <li class="navbar__item" id="navbar_selected"><a href="#">My coins</a></li>
+            <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
             <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
             <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
             <li class="navbar__item__divider"></li>
@@ -31,47 +31,41 @@
     </nav>
 </header>
 <div class="main">
-
     <aside class="filter">
         <div class="filter__title">
             <label class="filter__label">Search by:</label>
             <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
         </div>
-        <ul class="filter__items">
-            <li class="filter__item">
-                <label>Name</label>
-                <select class="filter-select" id="filter-name">
-                    <option class="select-items" value="1 Apsar The Dormition Cathedral of Dranda">1 Apsar The
-                        Dormition Cathedral of
-                        Dranda
-                    </option>
-                </select>
-            </li>
-            <li class="filter__item">
-                <label>Year</label>
-                <select class="filter-select" id="filter-year">
-                    <option class="select-items" value="1935">1935</option>
-                </select>
-            </li>
-            <li class="filter__item">
-                <label>Country</label>
-                <select class="filter-select" id="filter-country">
-                    <option class="select-items" value="abkhazia">Abkhazia</option>
-                </select>
-            </li>
-            <li class="filter__item">
-                <label>Shape</label>
-                <select class="filter-select" id="filter-shape">
-                    <option class="select-items" value="round">Round</option>
-                </select>
-            <li id="button-add" class="filter__item">
-                <input type="submit" value="Add a new coin">
-            </li>
-            <li class="filter__item">
-                <input type="submit" value="Search!">
-            </li>
-
-        </ul>
+            <ul class="filter__items">
+                <form action="mycoins" . <?php $this->searched_coins()?> method="post">
+                    <li class="filter__item">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="ex: 100 Lei - Carol II">
+                    </li>
+                    <li class="filter__item">
+                        <label for="year">Min Year - Max Year:</label>
+                        <input type="text" id="year" name="year" placeholder="ex: 1939-1950">
+                    </li>
+                    <li class="filter__item">
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="ex: Romania">
+                    </li>
+                    <li class="filter__item">
+                        <label for="shape">Shape:</label>
+                        <input type="text" id="shape" name="shape" placeholder="ex: round">
+                    </li>
+                    <li class="filter__item">
+                        <label for="material">Material:</label>
+                        <input type="text" id="material" name="material" placeholder="ex: copper">
+                    </li>
+                    <li class="filter__item">
+                        <input type="submit" value="Search">
+                    </li>
+                </form>
+                <li id="button-add" class="filter__item">
+                    <input type="submit" value="Add a new coin">
+                </li>
+            </ul>
     </aside>
 
     <main class="coins">
