@@ -49,7 +49,7 @@ class GetData_model extends Model
         $dropUserCoin = 'DELETE FROM user_coin';
         $stm = $this->db->prepare($dropUserCoin);
         $stm->execute();
-        $dropCoins = 'DELETE FROM user_coin';
+        $dropCoins = 'DELETE FROM coins';
         $stm = $this->db->prepare($dropCoins);
         $stm->execute();
 

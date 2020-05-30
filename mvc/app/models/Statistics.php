@@ -2,8 +2,6 @@
 
 class Statistics_model extends Model
 {
-    public $list = array();
-
     function __construct()
     {
         parent::__construct();

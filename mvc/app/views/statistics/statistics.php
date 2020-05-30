@@ -39,6 +39,10 @@
                     <li class="filter__item">
                         <input type="submit" value="Newest and oldest">
                     </li>
+                    <li class="filter__item">
+                        <input type="submit" name="rss_file" value="Generate RSS file" onclick="showAlert()">
+                        
+                    </li>
                 </ul>
             </form>
         </aside>
@@ -53,7 +57,7 @@
                 </tr>
 
                 <?php
-                $list = $this->model->list;
+                $list = $this->getList();
                 foreach ($list as $item) {
                     echo
                         '<tr>
@@ -72,5 +76,5 @@
         </div>
     </div>
 </body>
-
+<script src="javascript/my_coins.js"></script>
 </html>
