@@ -64,8 +64,5 @@ class Allcoins extends Controller
         $_POST = array();
     }
 
-    // function addCoinToCollection()
-    // {
-    //     echo ($_POST['id']);
-    // }
+   
 }

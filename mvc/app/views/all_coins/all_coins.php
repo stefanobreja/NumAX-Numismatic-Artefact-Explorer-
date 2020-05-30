@@ -99,8 +99,9 @@
                     else $weight = "Unkown";
                     echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g';
                 ?>
-                    <form method="post">
-                        <?php echo '<button class="coin__button" type="submit" name="add" value="' . $coin["id"] . '">Add</button>'; ?>
+                    <?php echo '<form action="" onsubmit="return phpAdd(' . $coin["id"] . ')" method="post">' ?>
+                    <input type="submit" name="add" value="Add">
+                    <!-- <?php echo '<input type="hidden" id="value" value="' . $coin["id"] . '">'; ?>-->
                     </form>
                 <?php
                     echo '</span>';
@@ -119,13 +120,19 @@
             image.src = URL.createObjectURL(blob);
             document.getElementById("front-image").src = image;
         }
+
+        // function phpAdd(coin_id) {
+        //     var phpadd = <?php addCoinToCollection(1); ?>;
+        //     console.log(coin_id);
+        //     alert(phpadd);
+        // }
     </script>
     <?php
-    if (isset($_POST['add'])) {
-        echo $_POST['add'];
-        // $this->addCoinToCollection();
-    }
-    ?>
+    // function addCoinToCollection($coin_id)
+    // {
+    //     echo $coin_id;
+    // }
+    // ?>
 </body>
 
 </html>
