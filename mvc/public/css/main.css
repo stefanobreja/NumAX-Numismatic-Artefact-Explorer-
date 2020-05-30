@@ -252,8 +252,8 @@ button.coin__button:hover {
     position: fixed;
     display: none;
     overflow-y: hidden;
-
 }
+
 .modal-content{
     position: relative;
     display: flex;
