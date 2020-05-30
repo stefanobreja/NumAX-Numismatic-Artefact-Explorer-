@@ -70,7 +70,7 @@
             <ul class="coin__container">
                 <?php
                 $coins = $this->getCoins();
-                // print_r($coins);
+                // print_r($coins); 
                 foreach ($coins as $coin) {
                     $fImage = $coin['front_picture'];
                     $bImage = $coin['back_picture'];
@@ -87,12 +87,9 @@
                     // info
                     echo '<div class="coin__info">';
                     echo '<span>' . $coin['name'] . '</span>';
-                    if ($coin['min_year'] == 0) {
+                    if ($coin['years'] == 0) {
                         $year = "Unkown";
-                    } else $year = $coin['min_year'];
-                    if ($coin['max_year'] != 0) {
-                        $year = $year . " - " . $coin['max_year'];
-                    }
+                    } else $year = $coin['years'];
                     echo '<span>' . $year . '</span>';
                     if ($coin['size'] != 0)
                         $size = $coin['size'];
@@ -100,10 +97,18 @@
                     if ($coin['weight'] != 0)
                         $weight = $coin['weight'];
                     else $weight = "Unkown";
-                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g <button class="coin__button" type="button">share</button></span>';
-                }
+                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g';
                 ?>
+                    <form method="post">
+                        <?php echo '<button class="coin__button" type="submit" name="add" value="' . $coin["id"] . '">Add</button>'; ?>
+                    </form>
+                <?php
+                    echo '</span>';
+                } ?>
             </ul>
+
+
+            </form>
         </main>
     </div>
     <script src="javascript/my_coins.js"></script>
@@ -115,6 +120,12 @@
             document.getElementById("front-image").src = image;
         }
     </script>
+    <?php
+    if (isset($_POST['add'])) {
+        echo $_POST['add'];
+        // $this->addCoinToCollection();
+    }
+    ?>
 </body>
 
 </html>

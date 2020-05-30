@@ -75,16 +75,17 @@ $coins = $this->getCoins();
         <main class="coins">
             <ul class="coin__container">
                 <?php
-                $coins = $this->getCoins();
                 // print_r($coins);
+                $random_list = shuffle($coins);
                 foreach ($coins as $coin) {
-                    // pictures
                     $fImage = $coin['front_picture'];
                     $bImage = $coin['back_picture'];
                     $encFrontIamge = base64_encode($fImage);
                     $encBackIamge = base64_encode($bImage);
                     $frontImg = "<img src='data:image/jpeg;base64,{$encFrontIamge}' alt=''>";
                     $backImg = "<img src='data:image/jpeg;base64,{$encBackIamge}' alt=''>";
+
+                    // pictures
                     echo '<li class="coin"> <div class="coin__images">';
                     echo $frontImg;
                     echo $backImg;
@@ -92,12 +93,9 @@ $coins = $this->getCoins();
                     // info
                     echo '<div class="coin__info">';
                     echo '<span>' . $coin['name'] . '</span>';
-                    if ($coin['min_year'] == 0) {
+                    if ($coin['years'] == 0) {
                         $year = "Unkown";
-                    } else $year = $coin['min_year'];
-                    if ($coin['max_year'] != 0) {
-                        $year = $year . " - " . $coin['max_year'];
-                    }
+                    } else $year = $coin['years'];
                     echo '<span>' . $year . '</span>';
                     if ($coin['size'] != 0)
                         $size = $coin['size'];
@@ -112,6 +110,7 @@ $coins = $this->getCoins();
         </main>
     </div>
 
+
     <!-- Modal section -->
     <div class="modal-add-coin">
         <div class="modal-content">
@@ -119,6 +118,10 @@ $coins = $this->getCoins();
             <div class="close">+</div>
             <div class="modal-criteria">
                 <form method="POST" action="mycoins/addCoin" enctype="multipart/form-data">
+                    <div class="modal-input">
+                        <label>Import image data:</label>
+                        <input type="file" name="back_image" id="back-image" class="file">
+                    </div>
                     <div class="modal-input">
                         <label>Title:</label>
                         <input type="text" id="title" name='title' placeholder="ex: Romania" required>
@@ -160,11 +163,11 @@ $coins = $this->getCoins();
                         <label>Front image:</label>
                         <input type="file" name="front_image" id="front-image" class="file">
                     </div>
-
                     <div class="modal-input">
                         <label>Back image:</label>
                         <input type="file" name="back_image" id="back-image" class="file">
                     </div>
+
 
                     <input id="submit-button" type="submit" value="Submit">
                 </form>
@@ -173,11 +176,8 @@ $coins = $this->getCoins();
 
         </div>
     </div>
-    </div>
-    </div>
 
     <script src="javascript/my_coins.js"></script>
-
 </body>
 
 </html>

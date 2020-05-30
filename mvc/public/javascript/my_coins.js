@@ -6,6 +6,7 @@ document.querySelector('.close').addEventListener('click', function () {
     document.querySelector('.modal-add-coin').style.display = 'none'
 });
 
+
 function hamburgerMenuOnClick() {
     document.getElementById("hamburger__menu").classList.toggle("change");
     document.getElementsByClassName("navbar__items")[0].classList.toggle("change");
@@ -22,9 +23,3 @@ function arrowPressed() {
     }
     document.getElementsByClassName("filter__arrow")[0].classList.toggle("hide");
 }
-
-function getImage(blob) {
-    var image = new Image();
-    image.src = URL.createObjectURL(blob);
-    
- }
