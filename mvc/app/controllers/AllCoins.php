@@ -64,5 +64,12 @@ class Allcoins extends Controller
         $_POST = array();
     }
 
-   
+    function AddCoin()
+    {
+        if (isset($_POST['coin__add'])) {
+            $coinId = $_POST['coin-id'];
+            $this->model->AddCoinToCollection($coinId);
+            header("location: /numax/mvc/public/mycoins");
+        }
+    }
 }

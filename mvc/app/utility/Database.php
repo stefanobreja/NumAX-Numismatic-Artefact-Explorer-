@@ -13,7 +13,7 @@ class Database
             $name = "numax";
             $username = "root";
             $password = "";
-            $this->_PDO = new PDO("mysql:host={$host};dbname={$name}", $username, $password);
+            $this->_PDO = new PDO("mysql:host={$host};dbname={$name};charset=utf8", $username, $password);
             // $this->_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // $this->_PDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             // $this->_PDO->setAttribute(PDO::ATTR_PERSISTENT, TRUE);
@@ -132,6 +132,4 @@ class Database
         $model = json_decode($jsonResponse, true);
         return $model;
     }
-
 }
-

@@ -19,7 +19,7 @@ class GetData_model extends Model
 
         $context = stream_context_create($opts);
 
-        $jsonResponse = file_get_contents("https://qmegas.info/numista-api/country/coins?limit=100&country_id=" . $country, false, $context);
+        $jsonResponse = file_get_contents("https://qmegas.info/numista-api/country/coins?limit=1000&country_id=" . $country, false, $context);
 
         return json_decode($jsonResponse, true)['list'];
     }

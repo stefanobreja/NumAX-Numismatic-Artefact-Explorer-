@@ -15,7 +15,8 @@ class Mycoins extends Controller
 
     private $my_coins;
     private $shown_coins;
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
     }
 
@@ -54,49 +55,105 @@ class Mycoins extends Controller
         header("location: /numax/mvc/public/mycoins");
     }
 
-    function getCoins() {
+    function getCoins()
+    {
         return $this->shown_coins;
     }
 
-    function searched_coins() {
+    function searched_coins()
+    {
         $this->shown_coins = $this->my_coins;
-        if(isset($_POST['name']) && $_POST['name']!=null && $_POST['name']!="" ) {
+        if (isset($_POST['name']) && $_POST['name'] != null && $_POST['name'] != "") {
             $name = strtolower($_POST['name']);
-            $this->shown_coins = array_filter($this->shown_coins,function($value) use ($name) {
-                return strpos(strtolower($value['name']),$name)!== false;
+            $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
+                return strpos(strtolower($value['name']), $name) !== false;
             });
         }
-        if(isset($_POST['country']) && $_POST['country']!=null && $_POST['country']!="") {
+        if (isset($_POST['country']) && $_POST['country'] != null && $_POST['country'] != "") {
             $name = strtolower($_POST['country']);
-            $this->shown_coins = array_filter($this->shown_coins,function($value) use ($name) {
-                return strpos(strtolower($value['country']),$name)!== false;
+            $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
+                return strpos(strtolower($value['country']), $name) !== false;
             });
         }
-        if(isset($_POST['shape']) && $_POST['shape']!=null && $_POST['shape']!="") {
+        if (isset($_POST['shape']) && $_POST['shape'] != null && $_POST['shape'] != "") {
             $name = strtolower($_POST['shape']);
-            $this->shown_coins = array_filter($this->shown_coins,function($value) use ($name) {
-                return strpos(strtolower($value['shape']),$name)!== false;
+            $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
+                return strpos(strtolower($value['shape']), $name) !== false;
             });
         }
-        if(isset($_POST['material']) && $_POST['material']!=null && $_POST['material']!="") {
+        if (isset($_POST['material']) && $_POST['material'] != null && $_POST['material'] != "") {
             $name = strtolower($_POST['material']);
-            $this->shown_coins = array_filter($this->shown_coins,function($value) use ($name) {
-                return strpos(strtolower($value['material']),$name)!== false;
+            $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
+                return strpos(strtolower($value['material']), $name) !== false;
             });
         }
-        if(isset($_POST['year']) && $_POST['year']!=null && $_POST['year']!="") {
-            $name = str_replace(" ","",$_POST['year']);
-            $name = explode("-",$name);
-            if(count($name) == 1) {
-                $this->shown_coins = array_filter($this->shown_coins,function($value) use ($name) {
-                    return ((intval($value['min_year']) == intval($name[0])) && (intval($value['max_year']) == intval($name[0]))); 
+        if (isset($_POST['year']) && $_POST['year'] != null && $_POST['year'] != "") {
+            $name = str_replace(" ", "", $_POST['year']);
+            $name = explode("-", $name);
+            if (count($name) == 1) {
+                $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
+                    return ((intval($value['min_year']) == intval($name[0])) && (intval($value['max_year']) == intval($name[0])));
                 });
             } else {
-                $this->shown_coins = array_filter($this->shown_coins,function($value) use ($name) {
+                $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
                     return (intval($value['min_year']) >= intval($name[0]) && intval($value['max_year']) <= intval($name[1]));
                 });
             }
         }
         $_POST = array();
+    }
+
+    function shareCoin()
+    {
+        if (isset($_POST['coin__share'])) {
+            $username = Session::get("username");
+            $userCoins = $this->model->get_user_coins($username);
+            $coinId = $_POST['coin-id'];
+            foreach ($userCoins as $coin) {
+                if ($coin["id"] == $coinId) {
+                    // $coinModel = new Coin(
+                    //     utf8_encode($coin["id"]),
+                    //     utf8_encode($coin["name"]),
+                    //     utf8_encode($coin["years"]),
+                    //     utf8_encode($coin["country"]),
+                    //     utf8_encode($coin["shape"]),
+                    //     utf8_encode($coin["size"]),
+                    //     utf8_encode($coin["weight"]),
+                    //     utf8_encode($coin["front_picture"]),
+                    //     utf8_encode($coin["back_picture"]),
+                    //     utf8_encode($coin["material"]),
+                    //     utf8_encode($coin["rarity_index"])
+                    // );
+
+                    $coinModel = new Coin(
+                        $coin["id"],
+                        $coin["name"],
+                        $coin["years"],
+                        $coin["country"],
+                        $coin["shape"],
+                        $coin["size"],
+                        $coin["weight"],
+                        $coin["front_picture"],
+                        $coin["back_picture"],
+                        $coin["material"],
+                        $coin["rarity_index"]
+                    );
+                    $coinArray = $coinModel->getArray();
+
+                    $file_name = "Coin_" . $coinId . ".json";
+                    header("Content-Type: application/json");
+                    header("Content-Disposition: attachment; filename=$file_name");
+                    header("Cache-Control: no-cache, no-store, must-revalidate");
+                    header("Pragma: no-cache");
+                    header("Expires: 0");
+                    $json = json_encode($coinArray);
+
+                    // $json = json_encode($coin);
+                    $error = json_last_error_msg();
+
+                    echo $json;
+                }
+            }
+        }
     }
 }

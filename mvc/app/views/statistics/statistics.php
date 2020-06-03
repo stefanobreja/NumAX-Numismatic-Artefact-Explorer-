@@ -17,11 +17,16 @@
         <!-- <div class="welcome">Welcome, User!</div> -->
         <nav class="navbar">
             <ul class="navbar__items">
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
-                <li class="navbar__item" id="navbar_selected">Statistics</li>
+                <li id="hamburger__menu" onclick="hamburgerMenuOnClick()">
+                    <div class="hamburger__bar1"></div>
+                    <div class="hamburger__bar2"></div>
+                    <div class="hamburger__bar3"></div>
+                </li>
+                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/mycoins">My coins</a></li>
+                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/allcoins">All coins</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://127.0.0.1/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login">Logout</a></li>
+                <li class="navbar__item logout"><a href="http://127.0.0.1/numax/mvc/public/login/logout">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -34,47 +39,49 @@
                         <input type="submit" name="most-popular" value="Most popular">
                     </li>
                     <li class="filter__item">
-                        <input type="submit" name="size" value="Size">
-                    </li>
-                    <li class="filter__item">
-                        <input type="submit" value="Newest and oldest">
+                        <input type="submit" name="rarest" value="Rarest">
                     </li>
                     <li class="filter__item">
                         <input type="submit" name="rss_file" value="Generate RSS file" onclick="showAlert()">
-                        
+
                     </li>
                 </ul>
             </form>
         </aside>
 
         <div class="statistics">
-            <table class="statistics-table">
-                <tr>
-                    <th>Name</th>
-                    <th>Year</th>
-                    <th>Country</th>
-                    <th>No.</th>
-                </tr>
+            <div class="table_div">
+                <table class="statistics-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Year</th>
+                        <th>Country</th>
+                    </tr>
 
-                <?php
-                $list = $this->getList();
-                foreach ($list as $item) {
-                    echo
-                        '<tr>
+                    <?php
+                    $list = $this->getList();
+                    foreach ($list as $item) {
+                        echo
+                            '<tr>
                             <td> ' . $item["name"] . '</td>
                             <td>' . $item["years"] . '</td>
                             <td>' . $item["country"] . '</td>
                         </tr>';
-                }
+                    }
 
-                ?>
-            </table>
+                    ?>
+                </table>
+            </div>
             <form action="statistics/outputCSV" method="post">
-                <input class="statistics-button" name="download" type="submit" value="Download">
+                <input class="statistics-button" name="download-csv" type="submit" value="Download">
+                <!-- <input class="statistics-button" name="download-pdf" type="submit" value="Download"> -->
             </form>
 
         </div>
+        <script src="javascript/my_coins.js"></script>
+
     </div>
 </body>
 <script src="javascript/my_coins.js"></script>
+
 </html>

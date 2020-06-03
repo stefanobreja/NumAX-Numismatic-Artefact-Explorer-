@@ -26,11 +26,11 @@ $coins = $this->getCoins();
                     <div class="hamburger__bar2"></div>
                     <div class="hamburger__bar3"></div>
                 </li>
-                <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://127.0.0.1/numax/mvc/public/mycoins">My coins</a></li>
+                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/allcoins">All coins</a></li>
+                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
+                <li class="navbar__item logout"><a href="http://127.0.0.1/numax/mvc/public/login/logout">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -103,8 +103,14 @@ $coins = $this->getCoins();
                     if ($coin['weight'] != 0)
                         $weight = $coin['weight'];
                     else $weight = "Unkown";
-                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g <button class="coin__button" type="button">share</button></span>';
-                }
+                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight;
+                ?>
+                    <form action="mycoins/shareCoin" method="post">
+                        <input class="add-share-button" type="submit" name="coin__share" value="Share">
+                        <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>
+                    </form>
+                    </span>
+                <?php }
                 ?>
             </ul>
         </main>
