@@ -23,11 +23,11 @@
                     <div class="hamburger__bar2"></div>
                     <div class="hamburger__bar3"></div>
                 </li>
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
-                <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
+                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/mycoins">My coins</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://127.0.0.1/numax/mvc/public/allcoins">All coins</a></li>
+                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
+                <li class="navbar__item logout"><a href="http://127.0.0.1/numax/mvc/public/login/logout">Logout</a></li>
 
             </ul>
         </nav>
@@ -99,9 +99,9 @@
                     else $weight = "Unkown";
                     echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g';
                 ?>
-                    <?php echo '<form action="" onsubmit="return phpAdd(' . $coin["id"] . ')" method="post">' ?>
-                    <input type="submit" name="add" value="Add">
-                    <!-- <?php echo '<input type="hidden" id="value" value="' . $coin["id"] . '">'; ?>-->
+                    <form action="allcoins/addcoin"  method="post">
+                        <input type="submit" name="coin__add" value="Add">
+                        <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>
                     </form>
                 <?php
                     echo '</span>';
@@ -120,19 +120,8 @@
             image.src = URL.createObjectURL(blob);
             document.getElementById("front-image").src = image;
         }
-
-        // function phpAdd(coin_id) {
-        //     var phpadd = <?php addCoinToCollection(1); ?>;
-        //     console.log(coin_id);
-        //     alert(phpadd);
-        // }
     </script>
-    <?php
-    // function addCoinToCollection($coin_id)
-    // {
-    //     echo $coin_id;
-    // }
-    // ?>
+
 </body>
 
 </html>

@@ -2,9 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>404</title>
+    <title>Data download complete</title>
 </head>
 <body>
-<p>Getting Data...</p>
 </body>
 </html>

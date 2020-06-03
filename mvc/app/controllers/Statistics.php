@@ -5,10 +5,12 @@ class Statistics extends Controller
     private $list = array();
     public function index()
     {
+        $this->getMostPopular();
         $this->view('statistics/statistics');
     }
 
-    function getList() {
+    function getList()
+    {
         return $this->list;
     }
 
@@ -17,16 +19,12 @@ class Statistics extends Controller
         if (isset($_POST['most-popular'])) {
             $this->getMostPopular();
         }
-        if (isset($_POST['Size'])) {
+        if (isset($_POST['rarest'])) {
+            $this->getRarest();
         }
-        if (isset($_POST['Newest and oldest'])) {
-        }
-        if(isset($_POST['rss_file'])) {
+        if (isset($_POST['rss_file'])) {
             $this->createRSS();
         }
-        // if (isset($_GET['download'])) {
-        //     $this->outputCSV($this->model->list);
-        // }
     }
 
     function getMostPopular()
@@ -35,12 +33,19 @@ class Statistics extends Controller
         $_SESSION['list_coins_download'] = $this->list;
     }
 
-
-    function outputCSV($file_name = 'file.csv')
+    function getRarest()
     {
-        $data = $_SESSION['list_coins_download'];
-        if (isset($_POST['download'])) {
+        $this->list = $this->model->getRarestCoins();
+        $_SESSION['list_coins_download'] = $this->list;
+    }
 
+
+    function outputCSV()
+    {
+
+        $data = $_SESSION['list_coins_download'];
+        if (isset($_POST['download-csv'])) {
+            $file_name = "Most Popular.csv";
             # output headers so that the file is downloaded rather than displayed
             header("Content-Type: text/csv");
             header("Content-Disposition: attachment; filename=$file_name");
@@ -57,27 +62,16 @@ class Statistics extends Controller
             # Then loop through the rows
             foreach ($data as $row) {
                 # Add the rows to the body
-                fputcsv($output, $row); // here you can change delimiter/enclosure
+                $row["index"] =
+                    fputcsv($output, $row); // here you can change delimiter/enclosure
             }
             # Close the stream off
             fclose($output);
         }
     }
 
-
-    function getBySize()
+    function createRSS()
     {
-
-        header("location: /numax/mvc/public/statistics");
-    }
-
-    function getByNewest()
-    {
-
-        header("location: /numax/mvc/public/statistics");
-    }
-
-    function createRSS() {
         $start = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
         <channel> 

@@ -6,6 +6,8 @@ require_once 'utility/Database.php';
 require_once 'core/Model.php';
 // require_once 'models/Coin.php';
 require_once 'core/Session.php';
+require_once 'models/Coin.php';
+
 
 
 //App Config

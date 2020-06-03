@@ -10,6 +10,11 @@ class GetData extends Controller
     public function index()
     {
         $this->view('/get_data');
-        $this->model->populateDB(['roumanie','rome','north_africa_islamic','east_africa_islamic','egypte']);
+        $this->model->populateDB([
+            'roumanie', 'rome', 'north_africa_islamic', 'east_africa_islamic', 'egypte', 'bielorussie',
+            'wohlau_city', 'canada_section', 'tibet', 'cuba', 'aquitaine_duchy', 'tachira', 'megara',
+            'france', 'paris_bishopric', 'hamm_city', 'konigsegg_earldom', 'meissen_margravate', 'great_seljuq'
+        ]);
+        header("location: /numax/mvc/public/allcoins");
     }
 }

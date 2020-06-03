@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='css/loginForm.css'>
-    <title>My coins</title>
+    <title>Login - numAX</title>
 </head>
 
 <body>
 <div>
     <div class="title">
-        <h4>Autentificare</h4>
+        <h4>Login</h4>
     </div>
     <div class="log_in">
         <form method="POST" class="login_form" action="login/authenticate">
@@ -24,11 +24,11 @@
                 <input id="login_password" type="password" name='pass' class="form_input" placeholder="Parola"
                        required>
             </div>
-            <p><a href="#">Ai uitat parola?</a></p>
+            <!-- <p><a href="#">Ai uitat parola?</a></p> -->
             <div class="buttons">
                 <input type="button" onclick="window.location.href = 'http://localhost/numax/mvc/public/register'"
-                       value="Inregistreaza-te">
-                <input type="submit" value="Intra in cont">
+                       value="    Register    ">
+                <input type="submit" value="    Login    ">
             </div>
         </form>
     </div>

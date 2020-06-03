@@ -31,4 +31,11 @@ class Statistics_model extends Model
         $results = $stm->fetchAll();
         return $results;
     }
+    function getRarestCoins(){
+        $sql = "select name,years,country from coins order by rarity_index desc";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        $results = $stm->fetchAll();
+        return $results;
+    }
 }
