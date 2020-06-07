@@ -423,6 +423,7 @@ td,tr{
     .add-share-button{
         min-width: 30%;
     }
+    
 
     .filter.show {
         visibility: visible;

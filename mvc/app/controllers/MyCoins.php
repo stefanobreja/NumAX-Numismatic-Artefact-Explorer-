@@ -103,7 +103,7 @@ class Mycoins extends Controller
         $_POST = array();
     }
 
-    function shareCoin()
+    function manageButton()
     {
         if (isset($_POST['coin__share'])) {
             $username = Session::get("username");
@@ -111,20 +111,6 @@ class Mycoins extends Controller
             $coinId = $_POST['coin-id'];
             foreach ($userCoins as $coin) {
                 if ($coin["id"] == $coinId) {
-                    // $coinModel = new Coin(
-                    //     utf8_encode($coin["id"]),
-                    //     utf8_encode($coin["name"]),
-                    //     utf8_encode($coin["years"]),
-                    //     utf8_encode($coin["country"]),
-                    //     utf8_encode($coin["shape"]),
-                    //     utf8_encode($coin["size"]),
-                    //     utf8_encode($coin["weight"]),
-                    //     utf8_encode($coin["front_picture"]),
-                    //     utf8_encode($coin["back_picture"]),
-                    //     utf8_encode($coin["material"]),
-                    //     utf8_encode($coin["rarity_index"])
-                    // );
-
                     $coinModel = new Coin(
                         $coin["id"],
                         $coin["name"],
@@ -149,11 +135,17 @@ class Mycoins extends Controller
                     $json = json_encode($coinArray);
 
                     // $json = json_encode($coin);
-                    $error = json_last_error_msg();
 
                     echo $json;
+                    break;
                 }
             }
+        }
+        if (isset($_POST['coin__delete'])) {
+            $username = Session::get("username");
+            $userCoins = $this->model->get_user_coins($username);
+            $coinId = $_POST['coin-id'];
+            $this->model->delete_user_coin($coinId);
         }
     }
 }

@@ -105,8 +105,9 @@ $coins = $this->getCoins();
                     else $weight = "Unkown";
                     echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight;
                 ?>
-                    <form action="mycoins/shareCoin" method="post">
+                    <form action="mycoins/manageButton" method="post">
                         <input class="add-share-button" type="submit" name="coin__share" value="Share">
+                        <input class="delete-button" type="submit" name="coin__delete" value="Delete">
                         <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>
                     </form>
                     </span>
@@ -125,7 +126,7 @@ $coins = $this->getCoins();
             <div class="modal-criteria">
                 <form method="POST" action="mycoins/addCoin" enctype="multipart/form-data">
                     <div class="modal-input">
-                        <label>Import image data:</label>
+                        <label>Import coin data:</label>
                         <input type="file" name="back_image" id="back-image" class="file">
                     </div>
                     <div class="modal-input">
