@@ -7,6 +7,9 @@ class Allcoins extends Controller
     function __construct()
     {
         parent::__construct();
+        if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
+            header("location: /numax/mvc/public/login");
+        }
     }
 
     public function index()
@@ -53,11 +56,27 @@ class Allcoins extends Controller
             $name = explode("-", $name);
             if (count($name) == 1) {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
-                    return ((intval($value['min_year']) == intval($name[0])) && (intval($value['max_year']) == intval($name[0])));
+                    $year = str_replace(" ", "", $value['years']);
+                    $year = str_replace(")","", $year);
+                    $year = str_replace("(","-",$year);
+                    $year = explode("-", $year);
+                    if(count($year) == 1) {
+                        return (intval($year[0]) == intval($name[0]));
+                    } else {
+                        return ((intval($year[0]) == intval($name[0])) || (intval($year[1]) == intval($name[0])));
+                    }
                 });
             } else {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
-                    return (intval($value['min_year']) >= intval($name[0]) && intval($value['max_year']) <= intval($name[1]));
+                    $year = str_replace(" ", "", $value['years']);
+                    $year = str_replace(")","", $year);
+                    $year = str_replace("(","-",$year);
+                    $year = explode("-", $year);
+                    if(count($year) == 1) {
+                        return (intval($year[0]) >= intval($name[0]) && intval($year[0]) <= intval($name[1]));
+                    } else {
+                        return ((intval($year[0]) >= intval($name[0])) && (intval($year[1]) <= intval($name[1])));
+                    }
                 });
             }
         }

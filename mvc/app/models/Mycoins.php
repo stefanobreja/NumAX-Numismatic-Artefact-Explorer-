@@ -19,6 +19,17 @@ class Mycoins_model extends Model
         return $results;
     }
 
+    function getCoinById($id, $username) {
+        $sql = "SELECT coins.* FROM coins join user_coin as uc on coins.id = uc.coin_id join users on uc.user_id = users.id 
+        WHERE users.username = ? and uc.coin_id = ?";
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(1, $username);
+        $stm->bindValue(2, $id);
+        $stm->execute();
+        $results = $stm->fetchAll();
+        return $results[0];
+    }
+
     function addCoinToCollection($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material)
     {
        $this->insertIntoCoins($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material);

@@ -18,6 +18,10 @@ class Mycoins extends Controller
     function __construct()
     {
         parent::__construct();
+
+        if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
+            header("location: /numax/mvc/public/login");
+        }
     }
 
     public function index()
@@ -92,11 +96,27 @@ class Mycoins extends Controller
             $name = explode("-", $name);
             if (count($name) == 1) {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
-                    return ((intval($value['min_year']) == intval($name[0])) && (intval($value['max_year']) == intval($name[0])));
+                    $year = str_replace(" ", "", $value['years']);
+                    $year = str_replace(")","", $year);
+                    $year = str_replace("(","-",$year);
+                    $year = explode("-", $year);
+                    if(count($year) == 1) {
+                        return (intval($year[0]) == intval($name[0]));
+                    } else {
+                        return ((intval($year[0]) == intval($name[0])) || (intval($year[1]) == intval($name[0])));
+                    }
                 });
             } else {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
-                    return (intval($value['min_year']) >= intval($name[0]) && intval($value['max_year']) <= intval($name[1]));
+                    $year = str_replace(" ", "", $value['years']);
+                    $year = str_replace(")","", $year);
+                    $year = str_replace("(","-",$year);
+                    $year = explode("-", $year);
+                    if(count($year) == 1) {
+                        return (intval($year[0]) >= intval($name[0]) && intval($year[0]) <= intval($name[1]));
+                    } else {
+                        return ((intval($year[0]) >= intval($name[0])) && (intval($year[1]) <= intval($name[1])));
+                    }
                 });
             }
         }
@@ -107,53 +127,35 @@ class Mycoins extends Controller
     {
         if (isset($_POST['coin__share'])) {
             $username = Session::get("username");
-            $userCoins = $this->model->get_user_coins($username);
-            $coinId = $_POST['coin-id'];
-            foreach ($userCoins as $coin) {
-                if ($coin["id"] == $coinId) {
-                    // $coinModel = new Coin(
-                    //     utf8_encode($coin["id"]),
-                    //     utf8_encode($coin["name"]),
-                    //     utf8_encode($coin["years"]),
-                    //     utf8_encode($coin["country"]),
-                    //     utf8_encode($coin["shape"]),
-                    //     utf8_encode($coin["size"]),
-                    //     utf8_encode($coin["weight"]),
-                    //     utf8_encode($coin["front_picture"]),
-                    //     utf8_encode($coin["back_picture"]),
-                    //     utf8_encode($coin["material"]),
-                    //     utf8_encode($coin["rarity_index"])
-                    // );
+            $coin = $this->model->getCoinById($_POST['coin-id'], $username);
+            // print_r($coin);
+            $coinModel = new Coin(
+                $coin["id"],
+                $coin["name"],
+                $coin["years"],
+                $coin["country"],
+                $coin["shape"],
+                $coin["size"],
+                $coin["weight"],
+                $coin["front_picture"],
+                $coin["back_picture"],
+                $coin["material"],
+                $coin["rarity_index"]
+            );
+            $coinArray = $coinModel->getArray();
 
-                    $coinModel = new Coin(
-                        $coin["id"],
-                        $coin["name"],
-                        $coin["years"],
-                        $coin["country"],
-                        $coin["shape"],
-                        $coin["size"],
-                        $coin["weight"],
-                        $coin["front_picture"],
-                        $coin["back_picture"],
-                        $coin["material"],
-                        $coin["rarity_index"]
-                    );
-                    $coinArray = $coinModel->getArray();
+            $file_name = "Coin_" . $coin['id'] . ".json";
+            header("Content-Type: application/json");
+            header("Content-Disposition: attachment; filename=$file_name");
+            header("Cache-Control: no-cache, no-store, must-revalidate");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+            $json = json_encode($coinArray);
 
-                    $file_name = "Coin_" . $coinId . ".json";
-                    header("Content-Type: application/json");
-                    header("Content-Disposition: attachment; filename=$file_name");
-                    header("Cache-Control: no-cache, no-store, must-revalidate");
-                    header("Pragma: no-cache");
-                    header("Expires: 0");
-                    $json = json_encode($coinArray);
+            // $json = json_encode($coin);
+            $error = json_last_error_msg();
 
-                    // $json = json_encode($coin);
-                    $error = json_last_error_msg();
-
-                    echo $json;
-                }
-            }
+            echo $json;
         }
     }
 }

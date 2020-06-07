@@ -3,6 +3,16 @@
 class Statistics extends Controller
 {
     private $list = array();
+    
+    function __construct()
+    {
+        parent::__construct();
+
+        if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
+            header("location: /numax/mvc/public/login");
+        }
+    }
+    
     public function index()
     {
         $this->getMostPopular();
