@@ -101,7 +101,7 @@
                     else $weight = "Unkown";
                     echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . "g";
                 ?>
-                    <form action="mycoins/shareCoin" method="post">
+                    <form action="mycoins/actionCoin" method="post">
                         <input type="submit" name="coin__share" value="Share">
                         <input type="submit" name="coin__delete" value="Delete">
                         <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>

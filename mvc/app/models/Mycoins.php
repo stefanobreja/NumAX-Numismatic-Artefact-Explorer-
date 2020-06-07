@@ -30,6 +30,16 @@ class Mycoins_model extends Model
         return $results[0];
     }
 
+    function deleteCoinFromUser($username, $coin_id) {
+        $sql = "DELETE uc FROM user_coin as uc join users on uc.user_id = users.id 
+        WHERE users.username = ? and uc.coin_id = ?";
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(1, $username);
+        $stm->bindValue(2, $coin_id);
+        $stm->execute();
+        // return $stm->rowCount();
+    }
+
     function addCoinToCollection($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material)
     {
        $this->insertIntoCoins($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material);

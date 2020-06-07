@@ -123,39 +123,51 @@ class Mycoins extends Controller
         $_POST = array();
     }
 
-    function shareCoin()
+    function actionCoin()
     {
+        $username = Session::get("username");
+        
         if (isset($_POST['coin__share'])) {
-            $username = Session::get("username");
-            $coin = $this->model->getCoinById($_POST['coin-id'], $username);
-            // print_r($coin);
-            $coinModel = new Coin(
-                $coin["id"],
-                $coin["name"],
-                $coin["years"],
-                $coin["country"],
-                $coin["shape"],
-                $coin["size"],
-                $coin["weight"],
-                $coin["front_picture"],
-                $coin["back_picture"],
-                $coin["material"],
-                $coin["rarity_index"]
-            );
-            $coinArray = $coinModel->getArray();
-
-            $file_name = "Coin_" . $coin['id'] . ".json";
-            header("Content-Type: application/json");
-            header("Content-Disposition: attachment; filename=$file_name");
-            header("Cache-Control: no-cache, no-store, must-revalidate");
-            header("Pragma: no-cache");
-            header("Expires: 0");
-            $json = json_encode($coinArray);
-
-            // $json = json_encode($coin);
-            $error = json_last_error_msg();
-
-            echo $json;
+            $this->shareCoin($username, $_POST['coin-id']);
         }
+        if(isset($_POST['coin__delete'])) {
+            $this->deleteCoin($username, $_POST['coin-id']);
+        }
+    }
+
+    function shareCoin($username, $coin_id) {
+        $coin = $this->model->getCoinById($coin_id, $username);
+        $coinModel = new Coin(
+            $coin["id"],
+            $coin["name"],
+            $coin["years"],
+            $coin["country"],
+            $coin["shape"],
+            $coin["size"],
+            $coin["weight"],
+            $coin["front_picture"],
+            $coin["back_picture"],
+            $coin["material"],
+            $coin["rarity_index"]
+        );
+        $coinArray = $coinModel->getArray();
+
+        $file_name = "Coin_" . $coin['id'] . ".json";
+        header("Content-Type: application/json");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        $json = json_encode($coinArray);
+
+        // $json = json_encode($coin);
+        $error = json_last_error_msg();
+
+        echo $json;
+    }
+
+    function deleteCoin($username, $coin_id) {
+        $this->model->deleteCoinFromUser($username, $coin_id);
+        header("location: /numax/mvc/public/mycoins");
     }
 }
