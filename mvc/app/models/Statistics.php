@@ -29,13 +29,14 @@ class Statistics_model extends Model
         $stm = $this->db->prepare($sql);
         $stm->execute();
         $results = $stm->fetchAll();
-        return $results;
+        return array_slice($results, 0, 10);
     }
+
     function getRarestCoins(){
         $sql = "select name,years,country from coins order by rarity_index desc";
         $stm = $this->db->prepare($sql);
         $stm->execute();
         $results = $stm->fetchAll();
-        return $results;
+        return array_slice($results, 0, 10);
     }
 }

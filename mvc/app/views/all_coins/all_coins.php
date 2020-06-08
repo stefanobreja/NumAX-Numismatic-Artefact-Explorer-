@@ -90,7 +90,7 @@
                     if ($coin['years'] == 0) {
                         $year = "Unkown";
                     } else $year = $coin['years'];
-                    echo '<span>' . $year . '</span>';
+                    echo '<span>' . $year . " | " . $coin['country']  . '</span>';
                     if ($coin['size'] != 0)
                         $size = $coin['size'];
                     else $size = "Unkown";

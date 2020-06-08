@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-$coins = $this->getCoins();
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +71,8 @@ $coins = $this->getCoins();
             <ul class="coin__container">
                 <?php
                 // print_r($coins);
-                $random_list = shuffle($coins);
+                $coins = $this->getCoins();
+                // $random_list = shuffle($coins);
                 foreach ($coins as $coin) {
                     $fImage = $coin['front_picture'];
                     $bImage = $coin['back_picture'];
@@ -96,18 +92,18 @@ $coins = $this->getCoins();
                     if ($coin['years'] == 0) {
                         $year = "Unkown";
                     } else $year = $coin['years'];
-                    echo '<span>' . $year . '</span>';
+                    echo '<span>' . $year . " | " . $coin['country'] . '</span>';
                     if ($coin['size'] != 0)
                         $size = $coin['size'];
                     else $size = "Unkown";
                     if ($coin['weight'] != 0)
                         $weight = $coin['weight'];
                     else $weight = "Unkown";
-                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight;
+                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . "g";
                 ?>
-                    <form action="mycoins/manageButton" method="post">
-                        <input class="add-share-button" type="submit" name="coin__share" value="Share">
-                        <input class="delete-button" type="submit" name="coin__delete" value="Delete">
+                    <form action="mycoins/actionCoin" method="post">
+                        <input type="submit" name="coin__share" value="Share">
+                        <input type="submit" name="coin__delete" value="Delete">
                         <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>
                     </form>
                     </span>
