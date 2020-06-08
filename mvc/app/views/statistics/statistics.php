@@ -72,8 +72,9 @@
                     ?>
                 </table>
             </div>
-            <form action="statistics/outputCSV" method="post">
-                <input class="statistics-button" name="download-csv" type="submit" value="Download">
+            <form action="statistics/output" method="post">
+                <input class="statistics-button" name="download-csv" type="submit" value="Download CSV">
+                <input class="statistics-button" name="download-pdf" type="submit" value="Download PDF">
                 <!-- <input class="statistics-button" name="download-pdf" type="submit" value="Download"> -->
             </form>
 
