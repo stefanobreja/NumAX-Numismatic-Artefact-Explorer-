@@ -122,7 +122,7 @@
             <div class="modal-criteria">
                 <form method="POST" action="mycoins/addCoin" enctype="multipart/form-data">
                     <div class="modal-input">
-                        <label>Import image data:</label>
+                        <label>Import coin data:</label>
                         <input type="file" name="back_image" id="back-image" class="file">
                     </div>
                     <div class="modal-input">

@@ -123,7 +123,7 @@ class Mycoins extends Controller
         $_POST = array();
     }
 
-    function actionCoin()
+    function manageButton()
     {
         $username = Session::get("username");
         
@@ -169,5 +169,6 @@ class Mycoins extends Controller
     function deleteCoin($username, $coin_id) {
         $this->model->deleteCoinFromUser($username, $coin_id);
         header("location: /numax/mvc/public/mycoins");
+
     }
 }

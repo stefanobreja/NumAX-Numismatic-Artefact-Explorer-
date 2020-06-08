@@ -93,5 +93,12 @@ class Mycoins_model extends Model
 
     }
 
-   
+    function delete_user_coin($coin_id){
+        $sql = "DELETE FROM user_coin WHERE coin_id=?";
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(1, $coin_id);
+        $stm->execute();
+        $stm->errorInfo();
+        header("location: /numax/mvc/public/mycoins");
+    } 
 }
