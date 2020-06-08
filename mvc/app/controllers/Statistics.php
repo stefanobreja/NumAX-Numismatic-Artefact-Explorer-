@@ -3,6 +3,16 @@
 class Statistics extends Controller
 {
     private $list = array();
+    
+    function __construct()
+    {
+        parent::__construct();
+
+        if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
+            header("location: /numax/mvc/public/login");
+        }
+    }
+    
     public function index()
     {
         $this->getMostPopular();
@@ -40,34 +50,59 @@ class Statistics extends Controller
     }
 
 
-    function outputCSV()
+    function output()
     {
-
         $data = $_SESSION['list_coins_download'];
         if (isset($_POST['download-csv'])) {
-            $file_name = "Most Popular.csv";
-            # output headers so that the file is downloaded rather than displayed
-            header("Content-Type: text/csv");
-            header("Content-Disposition: attachment; filename=$file_name");
-            # Disable caching - HTTP 1.1
-            header("Cache-Control: no-cache, no-store, must-revalidate");
-            # Disable caching - HTTP 1.0
-            header("Pragma: no-cache");
-            # Disable caching - Proxies
-            header("Expires: 0");
-
-            # Start the ouput
-            $output = fopen("php://output", "w");
-
-            # Then loop through the rows
-            foreach ($data as $row) {
-                # Add the rows to the body
-                $row["index"] =
-                    fputcsv($output, $row); // here you can change delimiter/enclosure
-            }
-            # Close the stream off
-            fclose($output);
+           $this->generateCSV($data);
         }
+        if (isset($_POST['download-pdf'])) {
+            $this->generatePDF($data);
+         }
+    }
+
+    function generatePDF($data) {
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B',16);
+
+        $pdf->Cell(40,10,'Coin Name');
+        $pdf->Cell(40,10,'Year');
+        $pdf->Cell(40,10,'Country');
+        $pdf->Ln(10);
+        foreach($data as $coin){
+            // $pdf->Cell(40,10,$row);
+            $pdf->Cell(40,10,$coin['name']);
+            $pdf->Cell(40,10,$coin['years']);
+            $pdf->Cell(40,10,$coin['country']);
+            $pdf->Ln(10);
+        }
+        $pdf->Output();
+    }
+
+    function generateCSV($data) {
+        $file_name = "Statistics.csv";
+        # output headers so that the file is downloaded rather than displayed
+        header("Content-Type: text/csv");
+        header("Content-Disposition: attachment; filename=$file_name");
+        # Disable caching - HTTP 1.1
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        # Disable caching - HTTP 1.0
+        header("Pragma: no-cache");
+        # Disable caching - Proxies
+        header("Expires: 0");
+
+        # Start the ouput
+        $output = fopen("php://output", "w");
+
+        # Then loop through the rows
+        foreach ($data as $row) {
+            # Add the rows to the body
+            $row["index"] =
+                fputcsv($output, $row); // here you can change delimiter/enclosure
+        }
+        # Close the stream off
+        fclose($output);
     }
 
     function createRSS()

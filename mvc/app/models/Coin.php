@@ -42,6 +42,8 @@ class Coin
             "weight" => $this->weight,
             "material" => $this->material,
             "rarity_index" => $this->rarity_index,
+            "front_picture" => base64_encode($this->front_picture),
+            "back_picture" => base64_encode($this->back_picture)
         ];
     }
 }
