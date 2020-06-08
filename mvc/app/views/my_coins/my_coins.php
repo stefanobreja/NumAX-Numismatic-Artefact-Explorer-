@@ -21,11 +21,11 @@
                     <div class="hamburger__bar2"></div>
                     <div class="hamburger__bar3"></div>
                 </li>
-                <li class="navbar__item" id="navbar_selected"><a href="http://127.0.0.1/numax/mvc/public/mycoins">My coins</a></li>
-                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/allcoins">All coins</a></li>
-                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/statistics">Statistics</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
+                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
+                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout"><a href="http://127.0.0.1/numax/mvc/public/login/logout">Logout</a></li>
+                <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
             </ul>
         </nav>
     </header>

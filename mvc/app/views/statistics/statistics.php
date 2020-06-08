@@ -10,11 +10,7 @@
 
 <body>
     <header class="header">
-        <!-- <div class="logo-image">
-        <img src="./logo3.jpg" alt="logo-image">
-    </div> -->
         <div class="logo">NumAX</div>
-        <!-- <div class="welcome">Welcome, User!</div> -->
         <nav class="navbar">
             <ul class="navbar__items">
                 <li id="hamburger__menu" onclick="hamburgerMenuOnClick()">
@@ -22,65 +18,80 @@
                     <div class="hamburger__bar2"></div>
                     <div class="hamburger__bar3"></div>
                 </li>
-                <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/mycoins">My coins</a></li>
+                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/mycoins">My coins</a></li>
                 <li class="navbar__item"><a href="http://127.0.0.1/numax/mvc/public/allcoins">All coins</a></li>
-                <li class="navbar__item" id="navbar_selected"><a href="http://127.0.0.1/numax/mvc/public/statistics">Statistics</a></li>
+                <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/statistics">Statistics</a></li>
                 <li class="navbar__item__divider"></li>
-                <li class="navbar__item logout"><a href="http://127.0.0.1/numax/mvc/public/login/logout">Logout</a></li>
+                <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
             </ul>
         </nav>
     </header>
     <div class="main">
         <aside class="filter">
-            <label class="filter__label">Search by:</label>
+            <div class="filter__title">
+                <label class="filter__label">Search by:</label>
+                <label class="filter__arrow" onclick="arrowPressed()">&lt;</label>
+            </div>
             <form action="statistics" <?php $this->manageButtonClick() ?> method="post">
                 <ul class="filter__items">
                     <li class="filter__item">
-                        <input type="submit" name="most-popular" value="Most popular">
+                        <input type="submit" name="most-popular" value="Top 10 Most Popular Coins">
                     </li>
                     <li class="filter__item">
-                        <input type="submit" name="rarest" value="Rarest">
+                        <input type="submit" name="rarest" value="Top 10 Rarest Coins">
                     </li>
                     <li class="filter__item">
-                        <input type="submit" name="rss_file" value="Generate RSS file" onclick="showAlert()">
-
+                        <input type="submit" name="smallest" value="Top 10 Smallest Coins">
+                    </li>
+                    <li class="filter__item">
+                        <input type="submit" name="rss_file" value="RSS file - most popular" onclick="showAlert()">
                     </li>
                 </ul>
             </form>
         </aside>
 
-        <div class="statistics">
-            <div class="table_div">
-                <table class="statistics-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Year</th>
-                        <th>Country</th>
-                    </tr>
-
-                    <?php
-                    $list = $this->getList();
-                    foreach ($list as $item) {
-                        echo
-                            '<tr>
-                            <td> ' . $item["name"] . '</td>
-                            <td>' . $item["years"] . '</td>
-                            <td>' . $item["country"] . '</td>
-                        </tr>';
-                    }
-
-                    ?>
-                </table>
-            </div>
-            <form action="statistics/output" method="post">
+        <main class="coins">
+            <form action="statistics" <?php $this->output() ?> method="post" class="stats_buttons">
                 <input class="statistics-button" name="download-csv" type="submit" value="Download CSV">
                 <input class="statistics-button" name="download-pdf" type="submit" value="Download PDF">
-                <!-- <input class="statistics-button" name="download-pdf" type="submit" value="Download"> -->
+                <?php echo '<input type="hidden" name="coins" value="' . base64_encode(serialize($this->getList())) . '">'; ?>
+                 <!-- <input class="statistics-button" name="download-pdf" type="submit" value="Download"> -->
             </form>
+            <ul class="coin__container">
+                <?php
+                $coins = $this->getList();
+                foreach ($coins as $coin) {
+                    $fImage = $coin['front_picture'];
+                    $bImage = $coin['back_picture'];
+                    $encFrontIamge = base64_encode($fImage);
+                    $encBackIamge = base64_encode($bImage);
+                    $frontImg = "<img src='data:image/jpeg;base64,{$encFrontIamge}' alt=''>";
+                    $backImg = "<img src='data:image/jpeg;base64,{$encBackIamge}' alt=''>";
 
-        </div>
+                    // pictures
+                    echo '<li class="coin"> <div class="coin__images">';
+                    echo $frontImg;
+                    echo $backImg;
+                    echo '</div>';
+                    // info
+                    echo '<div class="coin__info">';
+                    echo '<span>' . $coin['name'] . '</span>';
+                    if ($coin['years'] == 0) {
+                        $year = "Unkown";
+                    } else $year = $coin['years'];
+                    echo '<span>' . $year . " | " . $coin['country'] . '</span>';
+                    if ($coin['size'] != 0)
+                        $size = $coin['size'];
+                    else $size = "Unkown";
+                    if ($coin['weight'] != 0)
+                        $weight = $coin['weight'];
+                    else $weight = "Unkown";
+                    echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . "g</span>";
+                }
+                ?>
+            </ul>
+        </main>
         <script src="javascript/my_coins.js"></script>
-
     </div>
 </body>
 <script src="javascript/my_coins.js"></script>
