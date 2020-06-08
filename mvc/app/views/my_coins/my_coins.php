@@ -3,6 +3,7 @@
 
 <?php
 $coins = $this->getCoins();
+$coinAdd = new Coin("id", "Title", 0, "country", "shape", "size", "weight", "f_pict", "b_pict", "material", "rarity");
 ?>
 
 <head>
@@ -127,60 +128,52 @@ $coins = $this->getCoins();
                 <form method="POST" action="mycoins/addCoin" enctype="multipart/form-data">
                     <div class="modal-input">
                         <label>Import coin data:</label>
-                        <input type="file" name="back_image" id="back-image" class="file">
+                        <input type="file" name="import-coin" id="import-coin" class="file">
                     </div>
                     <div class="modal-input">
                         <label>Title:</label>
-                        <input type="text" id="title" name='title' placeholder="ex: Romania" required>
+                        <?php echo '<input type="text" id="title" name="title" placeholder="ex: Romania" value="' . $coinAdd->name . '" required>'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Country:</label>
-                        <input type="text" id="country" name="country" placeholder="ex: Romania">
+                        <?php echo '<input type="text" id="country" name="country" placeholder="ex: Romania" value="' . $coinAdd->country . '">'; ?>
                     </div>
 
                     <div class="modal-input">
-                        <label>Min. Year:</label>
-                        <input type="number" id="min-year" name="min-year" placeholder="ex: 1939">
-                    </div>
-
-                    <div class="modal-input">
-                        <label>Max. Year:</label>
-                        <input type="number" id="max-year" name="max-year" placeholder="ex: 1939">
+                        <label>Years:</label>
+                        <?php echo '<input type="number" id="min-year" name="min-year" placeholder="ex: 1939" value="' . $coinAdd->years . '">'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Shape:</label>
-                        <input type="text" id="shape" name="shape" placeholder="ex: round">
+                        <?php echo '<input type="text" id="shape" name="shape" placeholder="ex: round" value="' . $coinAdd->shape . '">'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Composition:</label>
-                        <input type="text" id="composition" name="composition" placeholder="ex: copper">
+                        <?php echo '<input type="text" id="composition" name="composition" placeholder="ex: copper" value="' . $coinAdd->material . '" >'; ?>
                     </div>
                     <div class="modal-input">
                         <label>Size:</label>
-                        <input type="text" id="size" name="size" placeholder="ex: 34(mm)">
+                        <?php echo '<input type="text" id="size" name="size" placeholder="ex: 34(mm)" value="' . $coinAdd->size . '" >'; ?>
                     </div>
                     <div class="modal-input">
                         <label>Weight:</label>
-                        <input type="text" id="weight" name="weight" placeholder="ex: 10.04g">
+                        <?php echo '<input type="text" id="weight" name="weight" placeholder="ex: 10.04g" value="' . $coinAdd->weight . '">'; ?>
                     </div>
                     <div class="modal-input">
                         <label>Front image:</label>
-                        <input type="file" name="front_image" id="front-image" class="file">
+                        <input type="file" name="front_image" id="front-image" class="file" required>
                     </div>
                     <div class="modal-input">
                         <label>Back image:</label>
-                        <input type="file" name="back_image" id="back-image" class="file">
+                        <input type="file" name="back_image" id="back-image" class="file" required>
                     </div>
 
-
-                    <input id="submit-button" type="submit" value="Submit">
+                    <input name="add_coin_submit" id="submit-button" type="submit" value="Submit">
                 </form>
-
             </div>
-
         </div>
     </div>
 

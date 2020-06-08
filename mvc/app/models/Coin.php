@@ -2,17 +2,18 @@
 
 class Coin
 {
-    private $id;
-    private $name;
-    private $years;
-    private $country;
-    private $shape;
-    private $size;
-    private $weight;
-    private $front_picture;
-    private $back_picture;
-    private $material;
-    private $rarity_index;
+    public $id;
+    public $name;
+    public $years;
+    public $country;
+    public $shape;
+    public $size;
+    public $weight;
+    public $front_picture;
+    public $back_picture;
+    public $material;
+    public $rarity_index;
+
 
     function __construct($id, $name, $years, $country, $shape, $size, $weight, $front_picture, $back_picture, $material, $rarity_index)
     {
