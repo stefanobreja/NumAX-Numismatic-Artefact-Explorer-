@@ -35,7 +35,7 @@
                 </div>
                 <br>
                 <div class="buttons" style="padding-top:10px;">
-                    <input type="button" onclick="window.location.href = 'http://127.0.0.1/numax/mvc/public/login'" value="   Go to login   ">
+                    <input type="button" onclick="window.location.href = 'http://localhost/numax/mvc/public/login'" value="   Go to login   ">
                     <input type="submit" value="   Register   ">
                 </div>
             </form>
