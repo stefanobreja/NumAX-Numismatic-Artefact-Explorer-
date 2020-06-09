@@ -9,15 +9,17 @@ class Login extends Controller
             Session::set("error","");
         }
         if (Session::get("isLogged") == true) {
-            header("location: /numax/mvc/public/mycoins");
+            if(Session::get("isAdmin") == false ) {
+                header("location: /numax/mvc/public/mycoins");
+            } else  {
+                header("location: /numax/mvc/public/users");
+            }
         }
     }
 
     public function index()
     {
         $this->view('login/login');
-        // $db = new Database();
-        // $db->populateDB('romania');
     }
 
     function authenticate() {
@@ -32,8 +34,12 @@ class Login extends Controller
                     Session::set("password",$password);
                     Session::set("isLogged",true);
                     Session::set("error","");
-                    // Session::destroy();
-                    header("location: /numax/mvc/public/mycoins");
+
+                    if(Session::get("isAdmin") == false) {
+                        header("location: /numax/mvc/public/mycoins");
+                    } else  {
+                        header("location: /numax/mvc/public/users");
+                    }
                 } else {
                     Session::set("error","Invalid username or password!");
                     header("location: /numax/mvc/public/login");
@@ -41,7 +47,11 @@ class Login extends Controller
             }
         } else {
             Session::set("error","");
-            header("location: /numax/mvc/public/mycoins");
+            if(Session::get("isAdmin") == false) {
+                header("location: /numax/mvc/public/mycoins");
+            } else  {
+                header("location: /numax/mvc/public/users");
+            }
         }
     }
 
