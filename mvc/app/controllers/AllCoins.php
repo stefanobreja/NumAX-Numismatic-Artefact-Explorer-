@@ -10,6 +10,9 @@ class Allcoins extends Controller
         if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
             header("location: /numax/mvc/public/login");
         }
+        if(Session::get("isAdmin") == true){
+            header("location: /numax/mvc/public/allcoinsadmin");
+        }
     }
 
     public function index()

@@ -14,6 +14,9 @@ class Users extends Controller {
         if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
             header("location: /numax/mvc/public/login");
         }
+        if(Session::get("isAdmin") == false){
+            header("location: /numax/mvc/public/mycoins");
+        }
         if (Session::get("username_selected") != false) {
             $this->username_selected = Session::get("username_selected");
         }

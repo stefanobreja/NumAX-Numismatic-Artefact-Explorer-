@@ -7,6 +7,12 @@ class AllcoinsAdmin extends Controller
     }
     public function index()
     {
+        if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
+            header("location: /numax/mvc/public/login");
+        }
+        if (Session::get("isAdmin") == false) {
+            header("location: /numax/mvc/public/mycoins");
+        }
         $this->all_coins = $this->model->get_coins();
         $this->shown_coins = $this->all_coins;
         $this->view('all_coins/all_coins_admin');
@@ -105,7 +111,9 @@ class AllcoinsAdmin extends Controller
 
     function getCoinById()
     {
-        $this->model->getCoin($_SESSION['coin-id']);
+        if (isset($_SESSION['coin-id'])) {
+            $this->model->getCoin($_SESSION['coin-id']);
+        }
     }
     function modifyCoin()
     {

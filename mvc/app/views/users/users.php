@@ -14,7 +14,7 @@ $session_value = (isset($_SESSION['error'])) ? $_SESSION['error'] : ''
 <body>
 
     <header class="header">
-        <div class="logo">NumAX</div>
+        <div class="logo">NumAX - Admin</div>
         <nav class="navbar">
             <ul class="navbar__items">
                 <li id="hamburger__menu" onclick="hamburgerMenuOnClick()">
@@ -23,7 +23,7 @@ $session_value = (isset($_SESSION['error'])) ? $_SESSION['error'] : ''
                     <div class="hamburger__bar3"></div>
                 </li>
                 <li class="navbar__item" id="navbar_selected"><a href="http://localhost/numax/mvc/public/users">Users</a></li>
-                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoins">All coins</a></li>
+                <li class="navbar__item"><a href="http://localhost/numax/mvc/public/allcoinsadmin">All coins</a></li>
                 <li class="navbar__item__divider"></li>
                 <li class="navbar__item logout"><a href="http://localhost/numax/mvc/public/login/logout">Logout</a></li>
 
