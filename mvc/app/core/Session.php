@@ -11,8 +11,13 @@ class Session{
 
     public static function get($key) {
         if(isset($_SESSION[$key])){
+            if($_SESSION[$key] != null)
             return $_SESSION[$key];
         } else return null;
+    }
+
+    public static function unset($key) {
+        unset($_SESSION[$key]);
     }
 
     public static function destroy() {
