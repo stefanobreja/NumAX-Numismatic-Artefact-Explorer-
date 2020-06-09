@@ -18,7 +18,6 @@ class Mycoins extends Controller
     function __construct()
     {
         parent::__construct();
-
         if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
             header("location: /numax/mvc/public/login");
         }
