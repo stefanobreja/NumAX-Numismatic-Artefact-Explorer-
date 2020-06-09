@@ -44,7 +44,7 @@
                         <input type="submit" name="smallest" value="Top 10 Smallest Coins">
                     </li>
                     <li class="filter__item">
-                        <input type="submit" name="rss_file" value="RSS file - most popular" onclick="showAlert()">
+                        <input type="submit" name="rss_file" value="RSS file - most popular">
                     </li>
                 </ul>
             </form>

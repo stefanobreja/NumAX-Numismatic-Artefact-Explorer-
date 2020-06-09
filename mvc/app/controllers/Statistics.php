@@ -187,6 +187,10 @@ class Statistics extends Controller
 
     function createRSS()
     {
+        $file_name = "rss.xml";
+        header("Content-Type: application/rss+xml; charset=ISO-8859-1");
+        header("Content-Disposition: attachment; filename=$file_name");
+        ob_end_clean();
         $start = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
         <channel> 
@@ -224,9 +228,9 @@ class Statistics extends Controller
         </item>
         </channel>
         </rss>";
-
+        
         $rss_content = $start . $body . $end;
-
-        file_put_contents("D:\\rss.xml", $rss_content);
+        echo $rss_content;
+        exit();
     }
 }
