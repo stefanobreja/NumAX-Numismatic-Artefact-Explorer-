@@ -1,3 +1,6 @@
+<?php
+$session_value = (isset($_SESSION['error'])) ? $_SESSION['error'] : ''
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +102,7 @@
                     else $weight = "Unkown";
                     echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g';
                 ?>
-                    <form action="allcoins/addcoin"  method="post">
+                    <form action="allcoins/addcoin" method="post">
                         <input type="submit" name="coin__add" value="Add">
                         <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>
                     </form>
@@ -115,6 +118,12 @@
     <script src="javascript/my_coins.js"></script>
 
     <script>
+        var myvar = '<?php echo $session_value; ?>';
+        '<?php $_SESSION["error"] = "" ?>';
+        if (myvar != "") {
+            alert("Coin already in your collection")
+        }
+
         function show(blob) {
             var image = new Image();
             image.src = URL.createObjectURL(blob);
