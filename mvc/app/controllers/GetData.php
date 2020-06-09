@@ -4,9 +4,6 @@ class GetData extends Controller
 {
     function __construct()
     {
-        if(Session::get("isAdmin") == false){
-            header("location: /numax/mvc/public/mycoins");
-        }
         parent::__construct();
     }
 

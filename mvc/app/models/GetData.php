@@ -58,7 +58,7 @@ class GetData_model extends Model
             $list = $this->getListOfCoinsByCountry($country);
 
             for ($i = 0; $i < count($list); $i++) {
-                if ($i % 10 == 0) {
+                if ($i % 100 == 0) {
                     $id = $list[$i]['id'];
                     $coinDetails = $this->getCoinDetails($id);
 
