@@ -40,40 +40,37 @@ class Mycoins_model extends Model
         // return $stm->rowCount();
     }
 
-    function addCoinToCollection($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material)
+    function addCoinToCollection($title, $years, $country, $shape, $size, $weight, $front_picture, $back_picture, $material)
     {
-       $this->insertIntoCoins($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material);
-       $this->insertIntoUserCoins($title,$min_year,$max_year,$country);
+       $this->insertIntoCoins($title, $years, $country, $shape, $size, $weight, $front_picture, $back_picture, $material);
+       $this->insertIntoUserCoins($title,$years,$country);
     }
 
-    private function insertIntoCoins($title, $min_year, $max_year, $country, $shape, $size, $weight, $front_picture, $back_picture, $material)
+    private function insertIntoCoins($title, $years, $country, $shape, $size, $weight, $front_picture, $back_picture, $material)
     {
-        $sql = 'INSERT INTO coins (name,min_year,max_year,country,shape,size,weight,front_picture,back_picture,material)
-        VALUES (?,?,?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO coins (name,years,country,shape,size,weight,front_picture,back_picture,material)
+        VALUES (?,?,?,?,?,?,?,?,?)';
         $stm = $this->db->prepare($sql);
         $stm->bindValue(1, $title);
-        $stm->bindValue(2, $min_year);
-        $stm->bindValue(3, $max_year);
-        $stm->bindValue(4, $country);
-        $stm->bindValue(5, $shape);
-        $stm->bindValue(6, $size);
-        $stm->bindValue(7, $weight);
-        $stm->bindValue(8, $front_picture);
-        $stm->bindValue(9, $back_picture);
-        $stm->bindValue(10, $material);
+        $stm->bindValue(2, $years);
+        $stm->bindValue(3, $country);
+        $stm->bindValue(4, $shape);
+        $stm->bindValue(5, $size);
+        $stm->bindValue(6, $weight);
+        $stm->bindValue(7, $front_picture);
+        $stm->bindValue(8, $back_picture);
+        $stm->bindValue(9, $material);
         $stm->execute();
         $stm->errorInfo();
-        
     }
 
-    private function insertIntoUserCoins($title, $min_year,$max_year, $country)
+    private function insertIntoUserCoins($title,$years, $country)
     {
-        $sql = "SELECT id FROM coins WHERE `name`= ? and `min_year`= ? and `max_year`=? and `country`=?";
+        $sql = "SELECT id FROM coins WHERE `name`= ? and `years`=? and `country`=?";
         $stm = $this->db->prepare($sql);
         $stm->bindValue(1, $title);
-        $stm->bindValue(2, $min_year);
-        $stm->bindValue(3, $max_year);
-        $stm->bindValue(4, $country);
+        $stm->bindValue(2, $years);
+        $stm->bindValue(3, $country);
         $stm->execute();
         $coinId = $stm->fetch();
         
@@ -93,5 +90,12 @@ class Mycoins_model extends Model
 
     }
 
-   
+    function delete_user_coin($coin_id){
+        $sql = "DELETE FROM user_coin WHERE coin_id=?";
+        $stm = $this->db->prepare($sql);
+        $stm->bindValue(1, $coin_id);
+        $stm->execute();
+        $stm->errorInfo();
+        header("location: /numax/mvc/public/mycoins");
+    } 
 }

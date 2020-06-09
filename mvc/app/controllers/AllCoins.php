@@ -57,10 +57,10 @@ class Allcoins extends Controller
             if (count($name) == 1) {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
                     $year = str_replace(" ", "", $value['years']);
-                    $year = str_replace(")","", $year);
-                    $year = str_replace("(","-",$year);
+                    $year = str_replace(")", "", $year);
+                    $year = str_replace("(", "-", $year);
                     $year = explode("-", $year);
-                    if(count($year) == 1) {
+                    if (count($year) == 1) {
                         return (intval($year[0]) == intval($name[0]));
                     } else {
                         return ((intval($year[0]) == intval($name[0])) || (intval($year[1]) == intval($name[0])));
@@ -69,10 +69,10 @@ class Allcoins extends Controller
             } else {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
                     $year = str_replace(" ", "", $value['years']);
-                    $year = str_replace(")","", $year);
-                    $year = str_replace("(","-",$year);
+                    $year = str_replace(")", "", $year);
+                    $year = str_replace("(", "-", $year);
                     $year = explode("-", $year);
-                    if(count($year) == 1) {
+                    if (count($year) == 1) {
                         return (intval($year[0]) >= intval($name[0]) && intval($year[0]) <= intval($name[1]));
                     } else {
                         return ((intval($year[0]) >= intval($name[0])) && (intval($year[1]) <= intval($name[1])));
@@ -87,8 +87,28 @@ class Allcoins extends Controller
     {
         if (isset($_POST['coin__add'])) {
             $coinId = $_POST['coin-id'];
-            $this->model->AddCoinToCollection($coinId);
-            header("location: /numax/mvc/public/mycoins");
+            $coinAlreadyExists = $this->verifyCoinExists($coinId);
+
+            if ($coinAlreadyExists) {
+                $_SESSION["error"]="error";
+                header("location: /numax/mvc/public/allcoins");
+            } else {
+                $this->model->AddCoinToCollection($coinId);
+                header("location: /numax/mvc/public/mycoins");
+            }
         }
+    }
+
+    function verifyCoinExists($coinId)
+    {
+        $userCoins = $this->model->get_user_coins($_SESSION["username"]);
+        $coinAlreadyExists = false;
+        foreach ($userCoins as $coin) {
+            if ($coin["id"] == $coinId) {
+                $coinAlreadyExists = true;
+                break;
+            }
+        }
+        return $coinAlreadyExists;
     }
 }
