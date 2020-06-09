@@ -158,7 +158,6 @@ input, .filter-select {
     font-size: 2em;
     color:rgb(253, 147, 139);
     text-shadow: 0.5px 0.5px 0.5px black;
-    top:-10px;
 }
 
 .user_options {
@@ -428,6 +427,10 @@ input.statistics-button {
         font-size: 1.3em;
     }
 
+    .logo {
+        font-size: 2em;
+    }
+
     .filter {
         visibility: hidden;
     }
@@ -483,6 +486,10 @@ input.statistics-button {
 
     input.statistics-button {
         width: 7.5em;
+    }
+
+    .username_intro {
+        font-size: 1.5em;
     }
 }
 
