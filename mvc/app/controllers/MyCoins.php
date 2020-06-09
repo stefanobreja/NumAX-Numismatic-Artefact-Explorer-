@@ -17,6 +17,9 @@ class Mycoins extends Controller
     function __construct()
     {
         parent::__construct();
+        if (Session::get("isLogged") == false || Session::get("isLogged") == null) {
+            header("location: /numax/mvc/public/login");
+        }
     }
 
     public function index()
@@ -36,7 +39,7 @@ class Mycoins extends Controller
             $this->shape =  isset($_POST['shape']) ? $_POST['shape'] : "Unknown";
             $this->size =  isset($_POST['size']) ? $_POST['size'] : 0;
             $this->weight =  isset($_POST['weight']) ? $_POST['weight'] : 0;
-
+ 
             // $name = $_FILES['front_image']['name'];
             // $type = $_FILES['front_image']['type'];
             $data = file_get_contents($_FILES['modal-front_image']['tmp_name']);
@@ -44,11 +47,11 @@ class Mycoins extends Controller
             // $name = $_FILES['back_image']['name'];
             // $type = $_FILES['back_image']['type'];
             $data = file_get_contents($_FILES['modal-back_image']['tmp_name']);
-
+ 
             $this->back_picture = $data;
             $this->material = isset($_POST['composition']) ? $_POST['composition'] : "Unknown";
-
-
+ 
+ 
             $this->model->addCoinToCollection($this->title, $this->years, $this->country, $this->shape, $this->size, $this->weight, $this->front_picture, $this->back_picture, $this->material);
             header("location: /numax/mvc/public/mycoins");
         }
@@ -94,60 +97,78 @@ class Mycoins extends Controller
             $name = explode("-", $name);
             if (count($name) == 1) {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
-                    return ((intval($value['min_year']) == intval($name[0])) && (intval($value['max_year']) == intval($name[0])));
+                    $year = str_replace(" ", "", $value['years']);
+                    $year = str_replace(")","", $year);
+                    $year = str_replace("(","-",$year);
+                    $year = explode("-", $year);
+                    if(count($year) == 1) {
+                        return (intval($year[0]) == intval($name[0]));
+                    } else {
+                        return ((intval($year[0]) == intval($name[0])) || (intval($year[1]) == intval($name[0])));
+                    }
                 });
             } else {
                 $this->shown_coins = array_filter($this->shown_coins, function ($value) use ($name) {
-                    return (intval($value['min_year']) >= intval($name[0]) && intval($value['max_year']) <= intval($name[1]));
+                    $year = str_replace(" ", "", $value['years']);
+                    $year = str_replace(")","", $year);
+                    $year = str_replace("(","-",$year);
+                    $year = explode("-", $year);
+                    if(count($year) == 1) {
+                        return (intval($year[0]) >= intval($name[0]) && intval($year[0]) <= intval($name[1]));
+                    } else {
+                        return ((intval($year[0]) >= intval($name[0])) && (intval($year[1]) <= intval($name[1])));
+                    }
                 });
             }
         }
         $_POST = array();
     }
 
-    function manageButton()
+    function actionCoin()
     {
+        $username = Session::get("username");
+        
         if (isset($_POST['coin__share'])) {
-            $username = Session::get("username");
-            $userCoins = $this->model->get_user_coins($username);
-            $coinId = $_POST['coin-id'];
-            foreach ($userCoins as $coin) {
-                if ($coin["id"] == $coinId) {
-                    $coinModel = new Coin(
-                        $coin["id"],
-                        $coin["name"],
-                        $coin["years"],
-                        $coin["country"],
-                        $coin["shape"],
-                        $coin["size"],
-                        $coin["weight"],
-                        $coin["front_picture"],
-                        $coin["back_picture"],
-                        $coin["material"],
-                        $coin["rarity_index"]
-                    );
-                    $coinArray = $coinModel->getArray();
-
-                    $file_name = "Coin_" . $coinId . ".json";
-                    header("Content-Type: application/json");
-                    header("Content-Disposition: attachment; filename=$file_name");
-                    header("Cache-Control: no-cache, no-store, must-revalidate");
-                    header("Pragma: no-cache");
-                    header("Expires: 0");
-                    $json = json_encode($coinArray);
-
-                    // $json = json_encode($coin);
-
-                    echo $json;
-                    break;
-                }
-            }
+            $this->shareCoin($username, $_POST['coin-id']);
         }
-        if (isset($_POST['coin__delete'])) {
-            $username = Session::get("username");
-            $userCoins = $this->model->get_user_coins($username);
-            $coinId = $_POST['coin-id'];
-            $this->model->delete_user_coin($coinId);
+        if(isset($_POST['coin__delete'])) {
+            $this->deleteCoin($username, $_POST['coin-id']);
         }
+    }
+
+    function shareCoin($username, $coin_id) {
+        $coin = $this->model->getCoinById($coin_id, $username);
+        $coinModel = new Coin(
+            $coin["id"],
+            $coin["name"],
+            $coin["years"],
+            $coin["country"],
+            $coin["shape"],
+            $coin["size"],
+            $coin["weight"],
+            $coin["front_picture"],
+            $coin["back_picture"],
+            $coin["material"],
+            $coin["rarity_index"]
+        );
+        $coinArray = $coinModel->getArray();
+
+        $file_name = "Coin_" . $coin['id'] . ".json";
+        header("Content-Type: application/json");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        $json = json_encode($coinArray);
+
+        // $json = json_encode($coin);
+        $error = json_last_error_msg();
+
+        echo $json;
+    }
+
+    function deleteCoin($username, $coin_id) {
+        $this->model->deleteCoinFromUser($username, $coin_id);
+        header("location: /numax/mvc/public/mycoins");
     }
 }
