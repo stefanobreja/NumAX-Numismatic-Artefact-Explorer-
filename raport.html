@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>NumAx</title>
+</head>
+
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>
+            Raport NumAX
+        </h1>
+        <div role="contentinfo">
+            <section typeof="sa:AuthorsList">
+                <h2>Autori</h2>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Stefan">
+                            <meta property="schema:additionalName" content="Iulian">
+                            <meta property="schema:familyName" content="Obreja">
+                            <span property="schema:name">Stefan Iulian Obreja</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:stefan.obreja@info.uaic.ro"
+                                    property="schema:email">stefan.obreja@info.uaic.ro</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Irina">
+                            <meta property="schema:additionalName" content="Elena">
+                            <meta property="schema:familyName" content="Cercel">
+                            <span property="schema:name">Irina Elena Cercel</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:eugen.zaharia@info.uaic.ro"
+                                    property="schema:email">irina.cercel@info.uaic.ro</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </header>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2>Abstract</h2>
+        <p>
+            Raportul acesta contine cerintele tehnice ce vor fi implementate si ce tehnologii vor fi utilizate. </p>
+    </section>
+    <section>
+        <h3>Obiective</h3>
+        <p>
+            Ne propunem ca la accesarea paginii noastre, utilizatorii sa poata sa vada o colectie de monede, sa isi
+            poata adauga propriile monede
+            si sa le poate vedea in profilul personal. De asemnea utilizatorii vor putea exporta si importa diferite
+            monezi.
+        </p>
+    </section>
+    <section id="techs">
+        <h3>Limbaje utilizate in cadrul aplicatiei</h3>
+        <ul>
+            <li><strong>MVC</strong> Arhitectura de tip MVC</li>
+            <li><strong>HTML5</strong> va fi folosit pentru structurarea continutului</li>
+            <li><strong>CSS/CSS3</strong> pentru stilizarea paginilor</li>
+            <li><strong>JavaScript</strong> este folosit in procesul de manipulare a DOM-ului (Document
+                Object Model)
+            </li>
+            <li><strong>PHP7.x</strong> este folosit pe partea de back-end ce comunica cu serverul Apache si baza de
+                date
+                MySQL
+            </li>
+            <li><strong>MySQL</strong> pentru managementul bazei de date</li>
+        </ul>
+    </section>
+    <section>
+        <h3>Database Diagram</h3>
+        <figure typeof="sa:image">
+            <img src="database-diagram.png" alt="Database Diagram">
+        </figure>
+    </section>
+    <section>
+        <h3>Use Case Diagram</h3>
+        <figure typeof="sa:image">
+            <img src="use-case-diagram.png" alt="Use Case Diagram">
+        </figure>
+    </section>
+
+    <section>
+        <h1>Proiect</h1>
+        <ul>
+            <li><strong>API</strong> Pentru datele despre monede am folosit https://qmegas.info/numista-api/. Acesta este un API gratuit asemanator cu API-ul de la Numista, insa fara limita 
+            de request-uri. Pentru a popula baza de date avem un controller (GetData) pentru a face request la API si apoi adaugam monedele in baza noastra de date.</li>
+        </ul>
+        <ul>
+            <li><strong>Login/Register</strong> Utilizatorii se pot inregistra si loga in aplicatie pentru ca profilul sa fie personalizat. Inregistrarea va fi realizata cu succes daca numele de utlizator nu mai exista deja in baza de date.
+                Peste parola se aplica o functie hash (md5) ce se retine in baza de date.
+            </li>
+        </ul>
+        <ul>
+            <li><strong>My Coins</strong> Sectiunea My Coins este sectiunea dedicata user-ului, unde poate vedea monedele pe care le detine, poate adauga monede noi, acestea stocandu-se in baza de date, 
+                cat si in portofoliul acestuia. Practic baza de date este creata si cu ajutorul utilizatorilor. De asemenea utilizatorii pot exporta si importa monede in format JSON. Cautarea monedele poate fi facuta dupa nume, an, etc, rezultandu-se 
+            monedele care indeplinesc criteriile cerute</li>
+        </ul>
+        <ul>
+            <li><strong>All Coins</strong> Aceasta este sectiunea in care se pot vedea toate monedele existente, se poate cauta o moneda la fel ca in cazul profilului utilizatorului. O monedata poate fi adaugata in My Coins prin apasarea
+            butonului "Add" din cadrul fiecarei monede. </li>
+        </ul>
+        <ul>
+            <li><strong>Statistics</strong> Aceasta este cea de-a treia pagina unde se pot vedea informatii despre cele mai populare monede, cele mai rare si cele mai mici monede, cat si generarea unui fisier RSS. </li>
+        </ul>
+    </section>
+</body>
+
+</html>
