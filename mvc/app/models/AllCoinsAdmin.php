@@ -68,7 +68,7 @@ class AllcoinsAdmin_model extends Model
             $stm->bindValue(5, $material);
             $stm->bindValue(6, $size);
             $stm->bindValue(7, $weight);
-            $stm->bindValue(8, $_SESSION['coin-id']);
+            $stm->bindValue(8, $_SESSION['coin-id-admin']);
             $stm->execute();
             $_SESSION['action-finised'] = "update";
         } catch (Exception $e) {

@@ -20,13 +20,13 @@ class AllcoinsAdmin extends Controller
     function manageCoin()
     {
         if (isset($_POST['coin__modify'])) {
-            $coinId = $_POST['coin-id'];
+            $coinId = $_POST['coin-id-admin'];
             $_SESSION['modify-coin'] = true;
-            $_SESSION['coin-id'] = $coinId;
+            $_SESSION['coin-id-admin'] = $coinId;
             header("location:/numax/mvc/public/allcoinsadmin");
         }
         if (isset($_POST['coin__delete'])) {
-            $coinId = $_POST['coin-id'];
+            $coinId = $_POST['coin-id-admin'];
             $this->model->DeleteCoinFromDB($coinId);
             header("location:/numax/mvc/public/allcoinsadmin");
         }
@@ -111,8 +111,8 @@ class AllcoinsAdmin extends Controller
 
     function getCoinById()
     {
-        if (isset($_SESSION['coin-id'])) {
-            $this->model->getCoin($_SESSION['coin-id']);
+        if (isset($_SESSION['coin-id-admin'])) {
+            return $this->model->getCoin($_SESSION['coin-id-admin']);
         }
     }
     function modifyCoin()

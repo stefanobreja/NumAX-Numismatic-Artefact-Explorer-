@@ -1,11 +1,10 @@
 <?php
-$coin = new Coin("", "", "", "", "", "", "", "", "", "", "");
+$coinModify = new Coin("", "", "", "", "", "", "", "", "", "", "");
 $actionFinised = (isset($_SESSION['action-finised'])) ? $_SESSION['action-finised'] : '';
 $modify_coin = (isset($_SESSION['modify-coin'])) ? $_SESSION['modify-coin'] : '';
-$coinId = (isset($_SESSION['coin-id'])) ? $_SESSION['coin-id'] : '';
 $dbCoin = $this->getCoinById();
 if ($dbCoin != null) {
-    $coin = new Coin(
+    $coinModify = new Coin(
         $dbCoin['id'],
         $dbCoin['name'],
         $dbCoin['years'],
@@ -117,8 +116,8 @@ if ($dbCoin != null) {
                     echo '<span>' . $coin['material'] . " | " . $size . "mm | " . $weight . 'g';
                 ?>
                     <form action="allcoinsadmin/manageCoin" method="post">
-                        <?php echo '<input type="hidden" name="coin-id" value="' . $coin["id"] . '">'; ?>
-                        <input type="submit" name="coin__modify" id="coin__modify"value="Modify"/>
+                        <?php echo '<input type="hidden" name="coin-id-admin" value="' . $coin["id"] . '">'; ?>
+                        <input type="submit" name="coin__modify" id="coin__modify" value="Modify" />
                         <input type="submit" name="coin__delete" value="Delete">
                     </form>
                 <?php
@@ -141,35 +140,35 @@ if ($dbCoin != null) {
                 <form method="POST" action="allcoinsadmin/modifyCoin" enctype="multipart/form-data">
                     <div class="modal-input">
                         <label>Title:</label>
-                        <?php echo '<input type="text" id="modal-title" name="title" placeholder="ex: Romania" value="' . $coin['name'] . '" required>'; ?>
+                        <?php echo '<input type="text" id="modal-title" name="title" placeholder="ex: Romania" value="' . $coinModify->name . '" required>'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Country:</label>
-                        <?php echo '<input type="text" id="modal-country" name="country" placeholder="ex: Romania" value="' . $coin['country'] . '" required>'; ?>
+                        <?php echo '<input type="text" id="modal-country" name="country" placeholder="ex: Romania" value="' . $coinModify->country. '" required>'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Years:</label>
-                        <?php echo '<input type="number" id="modal-years" name="years" placeholder="ex: 1939" value="' . $coin['years'] . '" required>'; ?>
+                        <?php echo '<input type="number" id="modal-years" name="years" placeholder="ex: 1939" value="' . $coinModify->years . '" required>'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Shape:</label>
-                        <?php echo '<input type="text" id="modal-shape" name="shape" placeholder="ex: round" value="' . $coin['shape'] . '" required>'; ?>
+                        <?php echo '<input type="text" id="modal-shape" name="shape" placeholder="ex: round" value="' . $coinModify->shape . '" required>'; ?>
                     </div>
 
                     <div class="modal-input">
                         <label>Composition:</label>
-                        <?php echo '<input type="text" id="modal-composition" name="composition" placeholder="ex: copper" value="' . $coin['material'] . '" required>'; ?>
+                        <?php echo '<input type="text" id="modal-composition" name="composition" placeholder="ex: copper" value="' . $coinModify->material . '" required>'; ?>
                     </div>
                     <div class="modal-input">
                         <label>Size:</label>
-                        <?php echo '<input type="text" id="modal-size" name="size" placeholder="ex: 34(mm)" value="' . $coin['size'] . '" required>'; ?>
+                        <?php echo '<input type="text" id="modal-size" name="size" placeholder="ex: 34(mm)" value="' . $coinModify->size . '" required>'; ?>
                     </div>
                     <div class="modal-input">
                         <label>Weight:</label>
-                        <?php echo '<input type="text" id="modal-weight" name="weight" placeholder="ex: 10.04g" value="' . $coin['weight'] . '" required>'; ?>
+                        <?php echo '<input type="text" id="modal-weight" name="weight" placeholder="ex: 10.04g" value="' . $coinModify->weight . '" required>'; ?>
                     </div>
                     <!-- <div class="modal-input">
                         <label>Front image:</label>
